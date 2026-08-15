@@ -1,4 +1,5 @@
 """Shared FastHTML components for the public site and application shell."""
+# ruff: noqa: F403, F405 - FastHTML's element DSL is intentionally exported.
 from __future__ import annotations
 
 from datetime import UTC, datetime

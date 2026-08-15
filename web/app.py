@@ -1,4 +1,5 @@
 """FastHTML application mounted alongside the retained FastVoice API."""
+# ruff: noqa: F403, F405 - FastHTML's element DSL is intentionally exported.
 from __future__ import annotations
 
 import os

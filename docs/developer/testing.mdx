@@ -1,0 +1,98 @@
+---
+title: "Testing FastVoice"
+description: "Run deterministic regressions, production browser checks, and voice-agent quality evaluations."
+---
+
+Use three separate layers. A failing page is a software regression and belongs
+in the deterministic test suite. A plausible but poor agent response is a
+quality regression and belongs in an evaluation suite.
+
+## Prerequisites
+
+- Python 3.13 and the repository virtual environment
+- The test environment variables in `api/.env.test.example`
+- Playwright Chrome for production browser checks
+- Docker only when you need to exercise a real PostgreSQL migration locally
+
+## Run the deterministic suite
+
+From the repository root, load the test configuration and run the API tests:
+
+```bash
+set -a
+source api/.env.test.example
+set +a
+PYTHONPATH=sdk/python/src:. .venv/bin/python -m pytest api/tests
+```
+
+For a fast UI regression check, run the route matrix alone:
+
+```bash
+set -a
+source api/.env.test.example
+set +a
+PYTHONPATH=sdk/python/src:. .venv/bin/python -m pytest \
+  api/tests/test_web_route_regressions.py
+```
+
+The matrix authenticates a test user, supplies stable API responses, requests
+every dashboard GET route, and rejects both non-200 responses and FastVoice's
+`This view could not be loaded:` error boundary. Add every new dashboard page
+to this matrix when you add its route.
+
+The authentication suite covers Google OIDC state and nonce validation,
+allowed return paths, FastSME suite SSO, verified local registration,
+single-use verification and password-reset tokens, and Redis-backed rate
+limits:
+
+```bash
+set -a
+source api/.env.test.example
+set +a
+PYTHONPATH=sdk/python/src:. .venv/bin/python -m pytest \
+  api/tests/test_web_auth_flows.py \
+  api/tests/test_auth_rate_limit.py \
+  api/tests/test_fastoffice_suite_sso.py
+```
+
+Run `scripts/pre_commit.sh` before every commit. It checks formatting, lint,
+Python-only source policy, the Python bridge and SDK synchronization, and the
+core regression tests.
+
+## Test a deployment
+
+After a production deployment, use a fresh browser profile and verify:
+
+1. `/`, `/login`, `/signup`, and `/forgot-password` at desktop and mobile widths.
+2. Google sign-in returns to the originally requested local path.
+3. `/recordings`, `/model-configurations`, and every route in
+   `test_web_route_regressions.py` renders without the error-boundary message.
+4. The browser console has no uncaught exceptions and the network log has no
+   unexpected 4xx or 5xx responses.
+5. Sign-out clears the session and a protected route redirects to `/login`.
+
+Complete one real email verification and password reset against a non-production
+test inbox whenever the email templates, Postmark configuration, token schema,
+or public URL changes. Do not automate a personal Google password or a 2FA
+challenge; complete those steps in the visible browser.
+
+## When to create `evals/`
+
+Do not create an evaluation suite to catch view rendering, CSRF helper imports,
+status codes, migrations, or OAuth protocol errors. Deterministic tests catch
+those defects faster and produce an exact failure location.
+
+Create `evals/` when FastVoice has a canonical seeded workflow and a repeatable
+way to replay text or audio turns. The first evaluation dataset should measure:
+
+- whether the agent answers the caller's stated task correctly;
+- whether it selects the correct tool and supplies valid arguments;
+- whether workflow variables and final dispositions are extracted correctly;
+- interruption handling, turn completion, and unwanted repetition;
+- safety and refusal behavior for adversarial prompts;
+- end-to-end latency, transcription accuracy, and call completion rate.
+
+Store versioned input fixtures and machine-checkable expected outcomes. Keep
+subjective rubric scores separate from hard pass/fail assertions, pin model and
+voice configuration in each run, and record provider, model, prompt revision,
+latency, and cost. Establish a baseline before making an eval a release gate.

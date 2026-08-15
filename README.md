@@ -103,19 +103,29 @@ Runnable programs live in [`examples/python`](examples/python).
 
 ## Authentication
 
-FastVoice uses FastSME suite SSO for production sign-in. FastOffice completes
-Google OpenID Connect and redirects to FastVoice with a short-lived,
+FastVoice offers Google OpenID Connect as the primary sign-in path. Register
+this exact production callback in Google Cloud and configure
+`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `GOOGLE_REDIRECT_URI`:
+
+```text
+https://voice.fastsme.com/auth/google/callback
+```
+
+FastSME suite SSO remains available as a secondary sign-in path. FastOffice
+completes Google OpenID Connect and redirects to FastVoice with a short-lived,
 audience-bound, single-use signed ticket. Configure `FASTOFFICE_URL` and the
-shared `FASTOFFICE_SSO_SECRET`; the FastVoice callback is:
+shared `FASTOFFICE_SSO_SECRET`; the suite callback is:
 
 ```text
 https://voice.fastsme.com/auth/suite/callback
 ```
 
-Local email/password authentication remains available. Direct Google OIDC is
-also supported as an optional fallback through `GOOGLE_CLIENT_ID` and
-`GOOGLE_CLIENT_SECRET`. Use `GOOGLE_ALLOWED_DOMAINS` or
-`GOOGLE_ALLOWED_EMAILS` to constrain either federated path.
+Local registration requires email verification, and password recovery uses
+single-use, expiring links. Configure `POSTMARK_API_TOKEN`, `FROM_EMAIL`, and
+`PUBLIC_BASE_URL` to send those transactional messages. Existing local users
+are treated as verified during the database migration. Use
+`GOOGLE_ALLOWED_DOMAINS` or `GOOGLE_ALLOWED_EMAILS` to constrain either
+federated path.
 
 ## Upstream synchronization
 
@@ -141,7 +151,9 @@ PYTHONPATH=sdk/python/src:. .venv/bin/python -m pytest api/tests
 ```
 
 The repository also enforces that no frontend-language source or its package
-toolchain enters the tracked tree.
+toolchain enters the tracked tree. See the [testing strategy](docs/developer/testing.mdx)
+for the route regression matrix, authentication checks, production browser
+smoke test, and the boundary between deterministic tests and voice-agent evals.
 
 ## Licensing and attribution
 

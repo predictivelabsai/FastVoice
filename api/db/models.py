@@ -70,6 +70,9 @@ class UserModel(Base):
     is_superuser = Column(Boolean, default=False)
     email = Column(String, nullable=True)
     password_hash = Column(String, nullable=True)
+    email_verified = Column(
+        Boolean, nullable=False, default=False, server_default=text("false")
+    )
 
     __table_args__ = (
         Index(
@@ -78,6 +81,22 @@ class UserModel(Base):
             unique=True,
             postgresql_where=text("email IS NOT NULL"),
         ),
+    )
+
+
+class UserAuthTokenModel(Base):
+    __tablename__ = "user_auth_tokens"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    purpose = Column(String(16), nullable=False)
+    token_hash = Column(String(64), nullable=False, unique=True, index=True)
+    expires_at = Column(DateTime(timezone=True), nullable=False, index=True)
+    used_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), nullable=False, default=lambda: datetime.now(UTC))
+
+    __table_args__ = (
+        Index("ix_user_auth_tokens_user_purpose", "user_id", "purpose"),
     )
 
 

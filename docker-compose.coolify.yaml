@@ -51,6 +51,8 @@ services:
       GOOGLE_ALLOWED_EMAILS: ${GOOGLE_ALLOWED_EMAILS:-}
       FASTOFFICE_URL: https://office.fastsme.com
       FASTOFFICE_SSO_SECRET: ${FASTOFFICE_SSO_SECRET}
+      POSTMARK_API_TOKEN: ${POSTMARK_API_TOKEN:-}
+      FROM_EMAIL: ${FROM_EMAIL:-info@fastsme.com}
       XAI_API_KEY: ${XAI_API_KEY:-}
       ENABLE_COTURN: "false"
       ENABLE_ARI_MANAGER: "false"

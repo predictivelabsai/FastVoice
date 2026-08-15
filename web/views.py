@@ -1,8 +1,8 @@
 """Authenticated FastVoice FastHTML views backed by the retained API services."""
+# ruff: noqa: F403, F405 - FastHTML's element DSL is intentionally exported.
 from __future__ import annotations
 
 import json
-from datetime import datetime
 from typing import Any
 
 from fasthtml.common import *
@@ -24,7 +24,7 @@ from api.routes.workflow import get_workflow, get_workflow_count, get_workflows
 from api.routes.workflow_recording import list_recordings
 from api.routes.reports import get_daily_report, get_workflow_options
 from api.routes.workflow_embed import get_embed_token
-from web.components import data_table, empty_state, format_time, metric, page_header, status_badge
+from web.components import csrf_input, data_table, empty_state, format_time, metric, page_header, status_badge
 
 
 def _get(obj: Any, key: str, default: Any = None) -> Any:
@@ -102,6 +102,10 @@ async def campaigns_view(user):
             ) for c in campaigns
         ],
     )
+    return (
+        page_header("Operate", "Campaigns", "Schedule and monitor outbound conversations with clear safeguards.", A("New campaign", href="/campaigns/new", cls="primary-action")),
+        Section(table if campaigns else empty_state("No campaigns yet", "Create an outbound campaign from a published voice agent."), cls="panel"),
+    )
 
 
 async def campaign_new_view(user, session):
@@ -174,12 +178,6 @@ async def campaign_detail_view(user, campaign_id: int, session):
         Section(Div(H2("Runs"), A("Download CSV report", href=f"/api/v1/campaign/{campaign_id}/report", cls="text-action"), cls="section-head"), data_table(("Run", "Status", "Started", "Completed", "Disposition"), run_rows) if run_rows else empty_state("No calls yet", "Start the campaign to queue its contact rows."), cls="panel"),
         Section(H2("Campaign log"), *[Article(Strong(_get(entry, "event", "Event")), P(_get(entry, "message", "")), Small(_get(entry, "ts", "")), cls="log-entry") for entry in logs], cls="panel") if logs else None,
     )
-    return (
-        page_header("Operate", "Campaigns", "Schedule and monitor outbound conversations with clear safeguards.", A("New campaign", href="/campaigns/new", cls="primary-action")),
-        Section(table if campaigns else empty_state("No campaigns yet", "Create an outbound campaign from a published voice agent."), cls="panel"),
-    )
-
-
 async def tools_view(user):
     tools = await list_tools(user=user)
     cards = [

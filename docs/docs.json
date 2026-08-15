@@ -150,7 +150,8 @@
             "pages": [
               "developer/workflow-schema",
               "developer/webhooks",
-              "developer/environment-variables"
+              "developer/environment-variables",
+              "developer/testing"
             ]
           },
           {

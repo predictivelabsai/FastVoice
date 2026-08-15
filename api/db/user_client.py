@@ -1,14 +1,16 @@
+import hashlib
+import secrets
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime, timedelta, timezone
 
 from loguru import logger
 from pydantic import ValidationError
-from sqlalchemy import func
+from sqlalchemy import delete, func, update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.future import select
 
 from api.db.base_client import BaseDBClient
-from api.db.models import UserConfigurationModel, UserModel
+from api.db.models import UserAuthTokenModel, UserConfigurationModel, UserModel
 from api.enums import UserConfigurationKey
 from api.schemas.ai_model_configuration import EffectiveAIModelConfiguration
 
@@ -190,6 +192,79 @@ class UserClient(BaseDBClient):
             await session.execute(stmt)
             await session.commit()
 
+    async def mark_user_email_verified(self, user_id: int) -> None:
+        async with self.async_session() as session:
+            await session.execute(
+                update(UserModel)
+                .where(UserModel.id == user_id)
+                .values(email_verified=True)
+            )
+            await session.commit()
+
+    async def update_user_password(self, user_id: int, password_hash: str) -> None:
+        async with self.async_session() as session:
+            await session.execute(
+                update(UserModel)
+                .where(UserModel.id == user_id)
+                .values(password_hash=password_hash)
+            )
+            await session.commit()
+
+    async def issue_user_auth_token(
+        self, user_id: int, purpose: str, ttl_seconds: int
+    ) -> str:
+        if purpose not in {"verify", "reset"}:
+            raise ValueError("Unsupported authentication token purpose")
+        token = secrets.token_urlsafe(32)
+        token_hash = hashlib.sha256(token.encode()).hexdigest()
+        now = datetime.now(UTC)
+        async with self.async_session() as session:
+            await session.execute(
+                delete(UserAuthTokenModel).where(
+                    UserAuthTokenModel.user_id == user_id,
+                    UserAuthTokenModel.purpose == purpose,
+                    UserAuthTokenModel.used_at.is_(None),
+                )
+            )
+            session.add(
+                UserAuthTokenModel(
+                    user_id=user_id,
+                    purpose=purpose,
+                    token_hash=token_hash,
+                    expires_at=now + timedelta(seconds=ttl_seconds),
+                )
+            )
+            await session.commit()
+        return token
+
+    async def consume_user_auth_token(
+        self, token: str, purpose: str
+    ) -> UserModel | None:
+        if not token or purpose not in {"verify", "reset"}:
+            return None
+        token_hash = hashlib.sha256(token.encode()).hexdigest()
+        now = datetime.now(UTC)
+        async with self.async_session() as session:
+            result = await session.execute(
+                select(UserAuthTokenModel)
+                .where(
+                    UserAuthTokenModel.token_hash == token_hash,
+                    UserAuthTokenModel.purpose == purpose,
+                    UserAuthTokenModel.used_at.is_(None),
+                    UserAuthTokenModel.expires_at > now,
+                )
+                .with_for_update()
+            )
+            auth_token = result.scalars().first()
+            if auth_token is None:
+                return None
+            auth_token.used_at = now
+            user = await session.get(UserModel, auth_token.user_id)
+            await session.commit()
+            if user is not None:
+                await session.refresh(user)
+            return user
+
     async def get_user_by_email(self, email: str) -> UserModel | None:
         """Fetch a user by their email address (case-insensitive).
 
@@ -206,7 +281,12 @@ class UserClient(BaseDBClient):
             return result.scalars().first()
 
     async def create_user_with_email(
-        self, email: str, password_hash: str, name: str | None = None
+        self,
+        email: str,
+        password_hash: str,
+        name: str | None = None,
+        *,
+        email_verified: bool = False,
     ) -> UserModel:
         """Create a new user with email and password hash."""
         async with self.async_session() as session:
@@ -214,6 +294,7 @@ class UserClient(BaseDBClient):
                 provider_id=f"oss_{int(datetime.now(timezone.utc).timestamp())}_{uuid.uuid4()}",
                 email=email.lower(),
                 password_hash=password_hash,
+                email_verified=email_verified,
             )
             session.add(user)
             await session.commit()

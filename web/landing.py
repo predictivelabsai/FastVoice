@@ -1,4 +1,5 @@
 """Anonymous FastVoice landing page."""
+# ruff: noqa: F403, F405 - FastHTML's element DSL is intentionally exported.
 from fasthtml.common import *
 
 from web.brand import APP_NAME, DESCRIPTION, TAGLINE
@@ -12,7 +13,7 @@ def landing_page():
             Header(
                 A(Div(NotStr(WAVE_MARK), cls="brand-mark"), Span(APP_NAME), href="/", cls="public-brand"),
                 Nav(A("Product", href="#product"), A("Developers", href="/developers"), A("GitHub", href="https://github.com/predictivelabsai/FastVoice"), aria_label="Public"),
-                A("Sign in with FastSME", href="/auth/fastoffice", cls="sign-in-link"),
+                A("Sign in", href="/login", cls="sign-in-link"),
                 cls="public-nav",
             ),
             Main(
@@ -22,7 +23,7 @@ def landing_page():
                         H1(TAGLINE),
                         P(DESCRIPTION, cls="hero-copy"),
                         Div(
-                            A("Start building", href="/auth/fastoffice", cls="primary-action"),
+                            A("Start building", href="/signup", cls="primary-action"),
                             A("Explore the API", href="/developers", cls="secondary-action"),
                             cls="hero-actions",
                         ),
