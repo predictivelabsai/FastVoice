@@ -1,7 +1,15 @@
 (function () {
   "use strict";
 
-  document.addEventListener("click", function (event) {
+document.addEventListener("click", function (event) {
+  var copy = event.target.closest("[data-copy-target]");
+  if (copy) {
+    var source = document.getElementById(copy.getAttribute("data-copy-target"));
+    if (source) {
+      navigator.clipboard.writeText(source.textContent || "");
+      copy.textContent = "Copied";
+    }
+  }
     var toggle = event.target.closest("[data-menu-toggle]");
     if (toggle) {
       document.querySelector(".sidebar")?.classList.toggle("open");

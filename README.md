@@ -127,6 +127,9 @@ git log --oneline --left-right main...upstream/main
 The initial port is based on upstream commit
 `66ab884d5e4098d37beef7bc502a422ef42951ee` (2026-08-14).
 
+The detailed source inventory, architecture decisions and functional parity
+map are recorded in [`docs/porting-analysis.md`](docs/porting-analysis.md).
+
 ## Tests
 
 ```bash
