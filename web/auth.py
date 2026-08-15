@@ -1,4 +1,4 @@
-"""Local and Google OAuth authentication for the FastHTML surface."""
+"""Local, Google OIDC, and FastSME suite authentication for FastHTML."""
 from __future__ import annotations
 
 import asyncio
@@ -18,6 +18,8 @@ from api.services.organization_bootstrap import ensure_organization_bootstrapped
 from api.utils.auth import create_jwt_token, hash_password, verify_password
 from web.brand import APP_NAME
 from web.components import WAVE_MARK, csrf_input, metadata
+from web.suite_auth import enabled as suite_sso_enabled
+from web.suite_auth import redeem_suite_ticket
 
 
 def _client_id() -> str:
@@ -40,9 +42,7 @@ def _allowed(identity: dict) -> bool:
     domains = {v.strip().lower() for v in os.getenv("GOOGLE_ALLOWED_DOMAINS", "").split(",") if v.strip()}
     if emails and email not in emails:
         return False
-    if domains and email.rsplit("@", 1)[-1] not in domains:
-        return False
-    return True
+    return not domains or email.rsplit("@", 1)[-1] in domains
 
 
 def _csrf_ok(session: dict, supplied: str) -> bool:
@@ -85,7 +85,9 @@ def login_page(session: dict, error: str = "", email: str = ""):
                 Span("Welcome back", cls="eyebrow"),
                 H1("Sign in to FastVoice"),
                 P("Build, test and operate voice agents on infrastructure you control."),
-                A("Continue with Google", href="/auth/google", cls="google-button") if google_enabled else Div("Google sign-in is not configured for this environment.", cls="notice notice-info"),
+                A("Continue with FastSME", href="/auth/fastoffice", cls="google-button") if suite_sso_enabled() else (
+                    A("Continue with Google", href="/auth/google", cls="google-button") if google_enabled else Div("Suite sign-in is not configured for this environment.", cls="notice notice-info")
+                ),
                 Div(Span("or continue with email"), cls="auth-divider"),
                 Form(
                     csrf_input(session),
@@ -208,7 +210,7 @@ def register_auth_routes(rt):
                 google_requests.Request(),
                 _client_id(),
             )
-        except Exception:
+        except Exception:  # noqa: BLE001 - Google token validation must fail closed.
             return login_page(session, "Google returned an invalid identity token.")
         if identity.get("nonce") != expected_nonce or not _allowed(identity):
             return login_page(session, "This Google account is not authorised for FastVoice.")
@@ -219,6 +221,30 @@ def register_auth_routes(rt):
             await db_client.update_user_email(user.id, email)
             user.email = email
         await _establish(session, user)
+        return RedirectResponse("/overview", status_code=303)
+
+    @rt("/auth/fastoffice", methods=["GET"])
+    def fastoffice_start():
+        if not suite_sso_enabled():
+            return RedirectResponse("/login", status_code=303)
+        issuer = os.getenv("FASTOFFICE_URL", "https://office.fastsme.com").rstrip("/")
+        return RedirectResponse(f"{issuer}/launch/voice", status_code=303)
+
+    @rt("/auth/suite/callback", methods=["GET"])
+    async def suite_callback(session, ticket: str = ""):
+        identity = await redeem_suite_ticket(ticket)
+        if identity is None:
+            return login_page(session, "Your FastSME session is invalid or expired.")
+        email = str(identity["email"]).strip().lower()
+        user = await db_client.get_user_by_email(email)
+        if user is None:
+            user, _ = await db_client.get_or_create_user_by_provider_id(f"fastoffice_{identity['sub']}")
+            await db_client.update_user_email(user.id, email)
+            user.email = email
+        await _establish(session, user)
+        session["suite_identity"] = {
+            key: identity[key] for key in ("sub", "name", "org_id", "org_name", "role")
+        }
         return RedirectResponse("/overview", status_code=303)
 
     @rt("/logout", methods=["POST"])

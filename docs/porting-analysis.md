@@ -1,3 +1,8 @@
+---
+title: FastVoice porting analysis
+description: Architecture, parity, deployment, and upstream-maintenance record for the FastVoice port.
+---
+
 # FastVoice porting analysis
 
 Updated: 2026-08-15  
@@ -66,7 +71,7 @@ bind mounts or a Node build stage.
 | Capability | FastVoice implementation |
 | --- | --- |
 | Public site | FastHTML landing page, product narrative, developer entry point, SEO metadata, sitemap, robots and favicon |
-| Authentication | Local sign-up/sign-in, signed sessions, CSRF, Google authorization-code OIDC, allowlisted emails/domains |
+| Authentication | Local sign-up/sign-in, signed sessions, CSRF, replay-safe FastSME suite SSO backed by FastOffice Google OIDC, allowlisted emails/domains |
 | Voice agents | List/filter/create, native canvas editor, typed node catalogue, transitions, draft save, publish, duplicate, archive/restore |
 | Browser testing | Scoped embed-token management and an authenticated microphone/chat preview page |
 | Embed distribution | Rebranded browser-native floating, inline and headless widget plus generated embed code |

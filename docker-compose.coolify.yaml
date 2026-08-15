@@ -49,6 +49,8 @@ services:
       GOOGLE_REDIRECT_URI: https://voice.fastsme.com/auth/google/callback
       GOOGLE_ALLOWED_DOMAINS: ${GOOGLE_ALLOWED_DOMAINS:-}
       GOOGLE_ALLOWED_EMAILS: ${GOOGLE_ALLOWED_EMAILS:-}
+      FASTOFFICE_URL: https://office.fastsme.com
+      FASTOFFICE_SSO_SECRET: ${FASTOFFICE_SSO_SECRET}
       XAI_API_KEY: ${XAI_API_KEY:-}
       ENABLE_COTURN: "false"
       ENABLE_ARI_MANAGER: "false"

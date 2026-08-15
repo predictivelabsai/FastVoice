@@ -103,15 +103,19 @@ Runnable programs live in [`examples/python`](examples/python).
 
 ## Authentication
 
-FastVoice supports local email/password accounts and Google OpenID Connect.
-The production callback is:
+FastVoice uses FastSME suite SSO for production sign-in. FastOffice completes
+Google OpenID Connect and redirects to FastVoice with a short-lived,
+audience-bound, single-use signed ticket. Configure `FASTOFFICE_URL` and the
+shared `FASTOFFICE_SSO_SECRET`; the FastVoice callback is:
 
 ```text
-https://voice.fastsme.com/auth/google/callback
+https://voice.fastsme.com/auth/suite/callback
 ```
 
-Set `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and optionally
-`GOOGLE_ALLOWED_DOMAINS` or `GOOGLE_ALLOWED_EMAILS`.
+Local email/password authentication remains available. Direct Google OIDC is
+also supported as an optional fallback through `GOOGLE_CLIENT_ID` and
+`GOOGLE_CLIENT_SECRET`. Use `GOOGLE_ALLOWED_DOMAINS` or
+`GOOGLE_ALLOWED_EMAILS` to constrain either federated path.
 
 ## Upstream synchronization
 

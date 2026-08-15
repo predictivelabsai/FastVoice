@@ -272,7 +272,7 @@ def generate_all(specs: list[dict[str, Any]], out_dir: Path) -> None:
 
     for spec in specs:
         module_name = _module_name_for(spec["name"])
-        source = _FILE_HEADER + "\n\n" + _render_spec_class(spec) + "\n"
+        source = _FILE_HEADER + "\n\n" + _render_spec_class(spec)
         (out_dir / f"{module_name}.py").write_text(source)
 
     (out_dir / "__init__.py").write_text(
