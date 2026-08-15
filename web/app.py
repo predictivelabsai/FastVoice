@@ -10,9 +10,11 @@ import secrets
 import tempfile
 import uuid
 from pathlib import Path
+from urllib.parse import urlencode
 
 from fastapi import UploadFile
 from fasthtml.common import *
+from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse, RedirectResponse, Response
 from starlette.staticfiles import StaticFiles
 
@@ -101,6 +103,21 @@ app, rt = fast_app(
 )
 app.mount("/static", StaticFiles(directory=ROOT / "static"), name="static")
 register_auth_routes(rt)
+
+
+async def preserve_protected_return_path(request, call_next):
+    """Carry an anonymous GET's local path through the login flow."""
+    response = await call_next(request)
+    if (
+        request.method == "GET"
+        and response.status_code in {302, 303, 307, 308}
+        and response.headers.get("location") == "/login"
+    ):
+        response.headers["location"] = f"/login?{urlencode({'next': request.url.path})}"
+    return response
+
+
+app.add_middleware(BaseHTTPMiddleware, dispatch=preserve_protected_return_path)
 
 
 async def _user(session):

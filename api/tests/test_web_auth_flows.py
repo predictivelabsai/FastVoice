@@ -48,6 +48,21 @@ def test_login_and_signup_expose_complete_account_paths(monkeypatch):
     assert 'minlength="10"' in signup.text
 
 
+def test_protected_route_preserves_return_path_through_login(monkeypatch):
+    monkeypatch.setenv("GOOGLE_CLIENT_ID", "google-client")
+    monkeypatch.setenv("GOOGLE_CLIENT_SECRET", "google-secret")
+    monkeypatch.setenv("FASTOFFICE_SSO_SECRET", "suite-secret")
+    client = TestClient(web_app.app)
+
+    protected = client.get("/recordings", follow_redirects=False)
+    assert protected.status_code == 303
+    assert protected.headers["location"] == "/login?next=%2Frecordings"
+
+    login = client.get(protected.headers["location"])
+    assert 'href="/auth/google?next=%2Frecordings"' in login.text
+    assert 'href="/auth/fastoffice?next=%2Frecordings"' in login.text
+
+
 def test_signup_requires_verification_before_creating_a_session(monkeypatch):
     client = TestClient(web_app.app)
     user = _user()
