@@ -1,0 +1,115 @@
+services:
+  gateway:
+    image: nginx:1.29-alpine
+    restart: unless-stopped
+    volumes:
+      - ./deploy/coolify/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      api:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    expose:
+      - "80"
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    restart: unless-stopped
+    environment:
+      ENVIRONMENT: production
+      DEPLOYMENT_MODE: oss
+      AUTH_PROVIDER: local
+      ENABLE_SIGNUP: ${ENABLE_SIGNUP:-true}
+      ENABLE_TELEMETRY: ${ENABLE_TELEMETRY:-false}
+      PUBLIC_BASE_URL: https://voice.fastsme.com
+      PUBLIC_HOST: voice.fastsme.com
+      BACKEND_API_ENDPOINT: https://voice.fastsme.com
+      UI_APP_URL: https://voice.fastsme.com
+      MINIO_PUBLIC_ENDPOINT: https://voice.fastsme.com
+      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD}@postgres:5432/fastvoice
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: voice-audio
+      MINIO_SECURE: "false"
+      OSS_JWT_SECRET: ${OSS_JWT_SECRET}
+      FASTVOICE_SESSION_SECRET: ${FASTVOICE_SESSION_SECRET}
+      FASTVOICE_DEVOPS_SECRET: ${FASTVOICE_DEVOPS_SECRET}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_REDIRECT_URI: https://voice.fastsme.com/auth/google/callback
+      GOOGLE_ALLOWED_DOMAINS: ${GOOGLE_ALLOWED_DOMAINS:-}
+      GOOGLE_ALLOWED_EMAILS: ${GOOGLE_ALLOWED_EMAILS:-}
+      XAI_API_KEY: ${XAI_API_KEY:-}
+      ENABLE_COTURN: "false"
+      ENABLE_ARI_MANAGER: "false"
+      ENABLE_CAMPAIGN_ORCHESTRATOR: "true"
+      TELEPHONY_WS_TOKEN_SECRET: ${TELEPHONY_WS_TOKEN_SECRET}
+      TELEPHONY_WS_TOKEN_ENFORCE: "true"
+      FORWARDED_ALLOW_IPS: "*"
+      LOG_LEVEL: INFO
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=5)"]
+      interval: 20s
+      timeout: 8s
+      retries: 8
+      start_period: 90s
+
+  postgres:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: fastvoice
+    volumes:
+      - fastvoice-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d fastvoice"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
+    volumes:
+      - fastvoice-redis:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a '${REDIS_PASSWORD}' ping | grep PONG"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    command: server /data --console-address :9001
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - fastvoice-minio:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  fastvoice-postgres:
+  fastvoice-redis:
+  fastvoice-minio:

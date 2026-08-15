@@ -1,0 +1,15 @@
+FastVoice
+Copyright (c) 2026 Predictive Labs Ltd
+
+FastVoice incorporates and modifies software from Dograh:
+https://github.com/dograh-hq/dograh
+
+Initial imported revision:
+66ab884d5e4098d37beef7bc502a422ef42951ee
+
+Dograh is Copyright (c) 2025 Zansat Technologies Private Limited and is used
+under the BSD 2-Clause License included at LICENSES/Dograh-BSD-2-Clause.txt.
+
+FastVoice-specific FastHTML, HTMX, browser-native JavaScript, authentication,
+deployment, branding, and Python bridge changes are Copyright (c) 2026
+Predictive Labs Ltd and are licensed under the repository MIT License.

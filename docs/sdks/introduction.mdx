@@ -1,0 +1,25 @@
+---
+title: "Python SDK"
+description: "Build and operate FastVoice agents programmatically from Python"
+---
+
+The `fastvoice-sdk` package wraps the FastVoice API and workflow builder.
+
+```bash
+uv pip install fastvoice-sdk
+```
+
+```python
+from fastvoice_sdk import FastVoiceClient
+
+with FastVoiceClient(
+    base_url="https://voice.fastsme.com",
+    api_key="fv_...",
+) as client:
+    for workflow in client.list_workflows():
+        print(workflow.id, workflow.name)
+```
+
+The client also reads `FASTVOICE_API_URL` and `FASTVOICE_API_KEY`. Endpoint
+methods and Pydantic models are generated from the server's filtered OpenAPI
+contract, while typed workflow nodes are generated from the node-spec catalog.

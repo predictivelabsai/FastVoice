@@ -1,0 +1,29 @@
+---
+title: "Add an agent to a website"
+description: "Embed a FastVoice voice or text agent without a build toolchain"
+---
+
+Publish the workflow, create an embed token, and paste the generated FastVoice
+snippet into any HTML page:
+
+```html
+<script>
+  (function (d, s, id) {
+    if (d.getElementById(id)) return;
+    const js = d.createElement(s);
+    js.id = id;
+    js.src = "https://voice.fastsme.com/static/js/embed.js?token=PUBLIC_EMBED_TOKEN&apiEndpoint=https://voice.fastsme.com";
+    js.setAttribute("data-fastvoice-context", JSON.stringify({
+      page_url: window.location.href
+    }));
+    js.async = true;
+    d.head.appendChild(js);
+  }(document, "script", "fastvoice-widget"));
+</script>
+```
+
+The component uses the browser microphone only after the visitor explicitly
+starts a call. The same browser-native widget supports voice, text chat,
+floating, inline, and headless modes through `window.FastVoiceWidget`.
+Restrict embed origins in the workflow settings and rotate a token immediately
+if it is exposed outside an allowed public page.

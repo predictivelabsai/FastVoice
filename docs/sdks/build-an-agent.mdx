@@ -1,0 +1,31 @@
+---
+title: "Build an agent"
+description: "Compose and save a typed FastVoice workflow in Python"
+---
+
+```python
+from fastvoice_sdk import FastVoiceClient, Workflow
+
+with FastVoiceClient(api_key="fv_...") as client:
+    workflow = Workflow(client=client, name="support")
+    start = workflow.add(
+        type="startCall",
+        name="Greeting",
+        prompt="Welcome the caller and ask what they need.",
+    )
+    finish = workflow.add(
+        type="endCall",
+        name="Resolved",
+        prompt="Confirm the outcome and say goodbye.",
+    )
+    workflow.edge(
+        start,
+        finish,
+        label="resolved",
+        condition="the caller confirms their request is resolved",
+    )
+```
+
+Every node field is validated against the live node-spec catalog. Unknown
+fields, missing required values, and invalid provider options fail at the call
+site. See `examples/python` for complete create, edit, and call programs.

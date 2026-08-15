@@ -1,0 +1,23 @@
+---
+title: "Outbound calls"
+description: "Place a test call with the FastVoice Python SDK"
+---
+
+Configure a telephony provider and publish the target workflow before placing
+an outbound call.
+
+```python
+from fastvoice_sdk import FastVoiceClient
+from fastvoice_sdk._generated_models import InitiateCallRequest
+
+with FastVoiceClient(api_key="fv_...") as client:
+    client.test_phone_call(
+        body=InitiateCallRequest(
+            workflow_id=42,
+            phone_number="+15551234567",
+        )
+    )
+```
+
+Use E.164 phone numbers and keep provider secrets in the FastVoice workspace,
+not in application source.

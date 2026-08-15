@@ -1,0 +1,2 @@
+fastvoice-sdk
+python-dotenv

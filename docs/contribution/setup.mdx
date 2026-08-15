@@ -1,0 +1,20 @@
+---
+title: "Development setup"
+description: "Run FastVoice with native Python and Docker backing services"
+---
+
+FastVoice uses Python 3.13, FastHTML, HTMX, browser-native JavaScript,
+Postgres/pgvector, Redis, MinIO, and Pipecat.
+
+```bash
+docker compose -f docker-compose-local.yaml up -d
+uv venv .venv --python 3.13
+uv pip install --python .venv/bin/python -r api/requirements.txt
+cp api/.env.example api/.env
+set -a; source api/.env; set +a
+.venv/bin/alembic -c api/alembic.ini upgrade head
+.venv/bin/uvicorn api.app:app --reload --port 8000
+```
+
+Open `http://localhost:8000`. The application, API, MCP server, static assets,
+and WebSockets use the same origin.

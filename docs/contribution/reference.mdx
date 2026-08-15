@@ -1,0 +1,20 @@
+---
+title: "Contributor reference"
+description: "Common FastVoice development commands"
+---
+
+```bash
+scripts/setup-worktree.sh
+scripts/generate_sdk.sh
+scripts/format.sh
+scripts/pre_commit.sh
+```
+
+Run focused tests with:
+
+```bash
+PYTHONPATH=sdk/python/src:. .venv/bin/python -m pytest api/tests
+```
+
+The `upstream` remote is used to review Dograh backend changes. Port changes
+selectively and preserve the FastHTML and Python-only application boundary.

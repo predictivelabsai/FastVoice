@@ -1,0 +1,61 @@
+name: FastVoice tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: fastvoice-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/test_db
+      REDIS_URL: redis://localhost:6379/0
+      MINIO_ENDPOINT: localhost:9000
+      MINIO_PUBLIC_ENDPOINT: http://localhost:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+      OSS_JWT_SECRET: test-only-secret
+      FASTVOICE_SESSION_SECRET: test-only-session-secret
+      ENVIRONMENT: test
+      DEPLOYMENT_MODE: oss
+      ENABLE_TELEMETRY: "false"
+      PYTHONPATH: ${{ github.workspace }}/sdk/python/src:${{ github.workspace }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv venv .venv --python 3.13
+      - run: uv pip install --python .venv/bin/python -r api/requirements.txt pytest pytest-asyncio pytest-cov ruff
+      - run: .venv/bin/python -m compileall -q api web sdk/python/src examples/python
+      - run: .venv/bin/python -m pytest api/tests -q

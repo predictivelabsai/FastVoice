@@ -1,0 +1,1 @@
+"""FastVoice FastHTML web application."""

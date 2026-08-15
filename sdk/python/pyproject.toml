@@ -1,0 +1,47 @@
+[project]
+name = "fastvoice-sdk"
+version = "0.2.0"
+description = "Typed builder for FastVoice voice-AI workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "BSD-2-Clause" }
+authors = [{ name = "Predictive Labs Ltd", email = "hello@fastsme.com" }]
+keywords = ["fastvoice", "voice-ai", "workflow", "sdk", "llm", "agent"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.urls]
+Homepage = "https://voice.fastsme.com"
+Documentation = "https://voice.fastsme.com/developers"
+Repository = "https://github.com/predictivelabsai/FastVoice"
+
+[project.scripts]
+fastvoice-sdk-codegen = "fastvoice_sdk.codegen:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fastvoice_sdk"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
