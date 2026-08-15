@@ -11,6 +11,12 @@ services:
         condition: service_healthy
     expose:
       - "80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/healthz"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   api:
     build:
