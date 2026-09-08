@@ -12,7 +12,7 @@ def landing_page():
         Div(
             Header(
                 A(Div(NotStr(WAVE_MARK), cls="brand-mark"), Span(APP_NAME), href="/", cls="public-brand"),
-                Nav(A("Product", href="#product"), A("Developers", href="/developers"), A("GitHub", href="https://github.com/predictivelabsai/FastVoice"), aria_label="Public"),
+                Nav(A("Product", href="#product"), A("Pricing", href="#pricing"), A("Developers", href="/developers"), A("GitHub", href="https://github.com/predictivelabsai/FastVoice"), aria_label="Public"),
                 A("Sign in", href="/login", cls="sign-in-link"),
                 cls="public-nav",
             ),
@@ -64,6 +64,31 @@ def landing_page():
                         cls="feature-grid",
                     ),
                     id="product",
+                    cls="feature-section",
+                ),
+                Section(
+                    Div(
+                        Span("Pricing", cls="section-kicker"),
+                        H2("Simple pricing for every FastSME product."),
+                        P("Every Fast* product uses the same two options: bring your own cloud for free, or host with us for €1 per month."),
+                        cls="section-intro",
+                    ),
+                    Div(
+                        Article(
+                            Span("BYOC"),
+                            H3("Bring Your Own Cloud"),
+                            P(Strong("Free")),
+                            P("Self-host on your own infrastructure or cloud. Full control of data and upgrades. No per-seat platform fee."),
+                        ),
+                        Article(
+                            Span("Hosted"),
+                            H3("Host with us"),
+                            P(Strong("€1 / month")),
+                            P("We run the product for you on FastSME-managed infrastructure. €1 per product per month."),
+                        ),
+                        cls="feature-grid",
+                    ),
+                    id="pricing",
                     cls="feature-section",
                 ),
                 Section(
