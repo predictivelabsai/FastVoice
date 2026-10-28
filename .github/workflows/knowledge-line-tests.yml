@@ -1,0 +1,19 @@
+name: knowledge-line-tests
+
+on:
+  pull_request:
+    paths: ["knowledge_line/**", ".github/workflows/knowledge-line-tests.yml"]
+  push:
+    branches: [main]
+    paths: ["knowledge_line/**"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r knowledge_line/requirements.txt
+      - run: python -m pytest knowledge_line/tests -q

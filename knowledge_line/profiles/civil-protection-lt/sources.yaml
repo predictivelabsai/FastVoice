@@ -1,0 +1,38 @@
+# Public Lithuanian civil-protection guidance used as the knowledge base.
+# Fetched verbatim by `python -m knowledge_line.scripts.fetch_kb`; every
+# chunk keeps its source URL so answers can cite it. Do not add private or
+# invented content here.
+# Some sites sit behind a bot challenge; the fetcher then falls back to an
+# Internet Archive snapshot. If both fail, the committed curated excerpt in
+# kb/<id>.md (copied verbatim from the page, `excerpt: true`) is kept.
+documents:
+  - id: lt72-priedangos
+    url: https://lt72.lt/priedangos-2-3/
+    publisher: LT72.lt (PAGD)
+  - id: lt72-oro-pavojus
+    url: https://lt72.lt/rekomendacijos-oro-pavojaus-atveju/
+    publisher: LT72.lt (PAGD)
+  - id: lt72-perspejimo-pranesimai
+    url: https://lt72.lt/kaip-elgtis-gavus-perspejimo-pranesima/
+    publisher: LT72.lt (PAGD)
+  - id: lt72-isvykimo-krepsys
+    url: https://lt72.lt/isvykimo-krepsys-5/
+    publisher: LT72.lt (PAGD)
+  - id: pagd-chemine-tarsa
+    url: https://pagd.lrv.lt/lt/ugniagesiai-pataria/kaip-elgtis-esant-cheminei-tarsai/
+    publisher: Priešgaisrinės apsaugos ir gelbėjimo departamentas
+  - id: bpc-numeris-112
+    url: https://bpc.lrv.lt/lt/numeris-112/
+    publisher: Bendrasis pagalbos centras
+  - id: eso-kritines-situacijos
+    url: https://www.eso.lt/namams/elektra/elektros-planiniai-atjungimai-ir-sutrikimai/kritines-situacijos/4207
+    publisher: ESO (Energijos skirstymo operatorius)
+    title: Kritinės situacijos (elektros tiekimo sutrikimai)
+
+structured:
+  shelters:
+    url: https://get.data.gov.lt/datasets/gov/pagd/priedangos/Priedanga
+    publisher: PAGD (atvirieji duomenys, data.gov.lt)
+    out: data/shelters.csv
+    # Empty list = whole country. Restrict to e.g. ["Vilniaus m. sav."] to keep the file small.
+    municipalities: []

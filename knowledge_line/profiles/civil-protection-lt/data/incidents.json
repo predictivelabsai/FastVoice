@@ -1,0 +1,20 @@
+{
+  "incidents": [
+    {
+      "id": "demo-power-outage",
+      "title": "Elektros tiekimo sutrikimas",
+      "area": "Šiaulių miesto savivaldybė",
+      "status": "planned",
+      "message": "Dalyje Šiaulių miesto sutrikęs elektros tiekimas. Apie gedimus praneškite ESO telefonu 1852. Jei kyla pavojus gyvybei, skambinkite 112.",
+      "source": "Demonstracinis įrašas (redaguojamas administravimo sąsajoje)"
+    },
+    {
+      "id": "demo-chemical",
+      "title": "Cheminės taršos pavojus",
+      "area": "Pavyzdinė teritorija",
+      "status": "inactive",
+      "message": "Likite patalpose, uždarykite langus ir duris, išjunkite vėdinimą, sekite oficialią informaciją per LRT ir lt72.lt.",
+      "source": "Demonstracinis įrašas (redaguojamas administravimo sąsajoje)"
+    }
+  ]
+}

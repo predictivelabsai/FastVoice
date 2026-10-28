@@ -1,0 +1,63 @@
+# FastVoice Knowledge Line - default configuration.
+# Every value can be overridden with env vars (see .env.example) or by
+# passing another YAML via --config / KL_CONFIG (deep-merged on top).
+profile: ${KL_PROFILE:-civil-protection-lt}
+locale: ${KL_LOCALE:-lt-LT}
+
+llm:
+  provider: ${KL_LLM_PROVIDER:-auto}        # auto | gemini | mistral | mock
+  fallback_order: [gemini, mistral, mock]   # used when provider=auto
+  temperature: 0.1
+  max_output_tokens: 800
+  gemini_thinking_budget: ${KL_GEMINI_THINKING_BUDGET:-0}   # gemini-2.5-*: 0 disables thinking (latency)
+  timeout_s: 30
+  models:
+    gemini: ${KL_GEMINI_MODEL:-gemini-2.5-flash}
+    mistral: ${KL_MISTRAL_MODEL:-mistral-large-latest}
+
+stt:
+  provider: ${KL_STT_PROVIDER:-auto}        # auto | elevenlabs | google | gemini | azure | tilde | mock
+  fallback_order: [elevenlabs, google, gemini, mock]
+
+tts:
+  provider: ${KL_TTS_PROVIDER:-auto}        # auto | google | elevenlabs | gemini | azure | tilde | mock
+  fallback_order: [elevenlabs, google, gemini, mock]   # measured: ElevenLabs v4 turbo fastest + lowest WER (see results/)
+  normalize: true                           # run locale text normaliser before TTS
+  speaking_rate: 1.0
+  slow_speaking_rate: 0.8                   # used when the caller asks "lėčiau"
+
+providers:
+  google:
+    # Auth: GOOGLE_APPLICATION_CREDENTIALS (service account, preferred) or GOOGLE_API_KEY.
+    stt_model: ${KL_GOOGLE_STT_MODEL:-latest_long}
+    tts_voice: ${KL_GOOGLE_TTS_VOICE:-}      # empty -> best available lt-LT voice
+    tts_audio_encoding: MP3
+  elevenlabs:
+    stt_model: ${KL_ELEVENLABS_STT_MODEL:-scribe_v1}
+    tts_model: ${KL_ELEVENLABS_TTS_MODEL:-eleven_v4_turbo}
+    voice_id: ${ELEVENLABS_VOICE_ID:-}      # empty -> first premade voice
+    language_code: lt
+    output_format: mp3_44100_128
+  gemini:  # Google Gemini API (GEMINI_API_KEY) - native TTS + audio transcription
+    tts_model: ${KL_GEMINI_TTS_MODEL:-gemini-2.5-flash-preview-tts}
+    tts_voice: ${KL_GEMINI_TTS_VOICE:-Kore}
+    stt_model: ${KL_GEMINI_STT_MODEL:-gemini-2.5-flash}
+  azure:   # stub adapter - disabled by default
+    enabled: ${KL_AZURE_ENABLED:-false}
+    region: ${AZURE_SPEECH_REGION:-westeurope}
+    tts_voice: lt-LT-OnaNeural
+  tilde:   # stub adapter - disabled by default
+    enabled: ${KL_TILDE_ENABLED:-false}
+    endpoint: ${TILDE_ENDPOINT:-}
+
+rag:
+  top_k: 4
+  min_score: 1.0          # BM25 grounding threshold; below -> "no reliable info" answer
+  min_overlap: 0.34       # and at least this share of the question's terms must appear in the passage
+  max_context_chars: 6000
+
+web:
+  host: ${KL_HOST:-127.0.0.1}
+  port: ${KL_PORT:-5055}
+
+output_dir: ${KL_OUTPUT_DIR:-knowledge_line/output}

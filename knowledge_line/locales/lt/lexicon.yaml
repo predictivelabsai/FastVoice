@@ -1,0 +1,31 @@
+# Lithuanian pronunciation lexicon for TTS.
+# `spoken` is what every TTS engine receives (alias substitution), so it works
+# across Google, ElevenLabs, Azure and Tilde without vendor-specific SSML.
+# `stress` documents the accented syllable (kirtis) for reviewers / future
+# phoneme-level (SSML <phoneme>) support. Keep entries public-domain terms only.
+service_numbers: ["112"]
+feminine_stems: [valand, par, dien, minut, sekund, savait, priedang, sien, eil, viet, taisykl, grup, ton]
+terms:
+  - {written: "LT72.lt", spoken: "el tė septyniasdešimt du taškas el tė"}
+  - {written: "lt72.lt", spoken: "el tė septyniasdešimt du taškas el tė"}
+  - {written: "LT72", spoken: "el tė septyniasdešimt du"}
+  - {written: "112.lt", spoken: "vienas, vienas, du taškas el tė"}
+  - {written: "pagd.lrv.lt", spoken: "pė a gė dė taškas el er vė taškas el tė"}
+  - {written: "bpc.lrv.lt", spoken: "bė pė cė taškas el er vė taškas el tė"}
+  - {written: "vilnius.lt", spoken: "vilnius taškas el tė"}
+  - {written: "eso.lt", spoken: "e es o taškas el tė"}
+  - {written: "PAGD", spoken: "pė a gė dė", expansion: "Priešgaisrinės apsaugos ir gelbėjimo departamentas"}
+  - {written: "BPC", spoken: "bė pė cė", expansion: "Bendrasis pagalbos centras"}
+  - {written: "ESO", spoken: "e es o", expansion: "Energijos skirstymo operatorius"}
+  - {written: "LRT", spoken: "el er tė", expansion: "Lietuvos radijas ir televizija"}
+  - {written: "VRM", spoken: "vė er em", expansion: "Vidaus reikalų ministerija"}
+  - {written: "ESSC", spoken: "e es es cė", expansion: "Ekstremalių sveikatai situacijų centras"}
+  - {written: "SMS", spoken: "es em es"}
+  - {written: "USB", spoken: "iu es bi"}
+  - {written: "LK", spoken: "el ka"}
+  - {written: "ES", spoken: "e es"}
+  - {written: "DI", spoken: "dė i", expansion: "dirbtinis intelektas"}
+  - {written: "Žirmūnų", spoken: "Žirmūnų", stress: "Žir-mū́-nų"}
+  - {written: "seniūnija", spoken: "seniūnija", stress: "se-niū-ni-jà"}
+  - {written: "priedanga", spoken: "priedanga", stress: "prieˈdan-ga"}
+  - {written: "kalio jodidas", spoken: "kalio jodidas", stress: "ká-lio jo-dì-das"}
