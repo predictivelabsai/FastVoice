@@ -1,0 +1,1048 @@
+{
+  "generated": "20261028-0941",
+  "locale": "lt-LT",
+  "llm": [
+    {
+      "metrics": {
+        "provider": "gemini:gemini-2.5-flash",
+        "n": 18,
+        "action_accuracy": 1.0,
+        "point_coverage": 0.903,
+        "answer_point_coverage": 0.875,
+        "citation_rate": 1.0,
+        "lithuanian_rate": 1.0,
+        "phone_style_rate": 1.0,
+        "avg_words": 54.1,
+        "latency_p50_ms": 842.0,
+        "latency_p95_ms": 1191.0,
+        "errors": 0
+      },
+      "items": [
+        {
+          "id": "shelter-generic",
+          "question": "Kur man slėptis, jei paskelbtų oro pavojų?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Oro pavojaus atveju Jums rekomenduojama vykti į artimiausią priedangą [1]. Priedangos yra pažymėtos specialiu geltonu kvadratu su užrašu „Priedanga“ [2].\n\nJei priedangos nėra šalia, slėpkitės kitoje saugioje vietoje, pavyzdžiui, namo rūsyje arba vidinėje patalpoje be langų, tokioje kaip sandėliukas ar vonios kambarys [1, 2]. Taip pat tinka vieta, atitinkanti dviejų sienų taisyklę, kai tarp Jūsų ir pastato išorės yra bent dvi sienos [2]. Venkite langų, balkonų, liftų ir atvirų erdvių, o paskutinio aukšto patalpos netinka [2].",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 76,
+          "latency_ms": 1375.4,
+          "error": ""
+        },
+        {
+          "id": "shelter-eldership",
+          "question": "Laba diena, kur man slėptis, jei paskelbtų oro pavojų? Gyvenu Žirmūnuose.",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Ar teisingai supratau – Žirmūnų seniūnija (Vilniaus m. sav.)? Oro pavojaus atveju Jums rekomenduojama vykti į artimiausią priedangą [2]. Žirmūnuose yra dvi priedangos: daugiabutis namas su požeminiu parkingu Verkių g. 39 ir daugiabutis namas su požeminiu parkingu Olimpiečių g. 3E [1]. Abi priedangos pritaikytos asmenims su negalia [1].\n\nJei priedangos nėra šalia, slėpkitės kitoje saugioje vietoje, pavyzdžiui, namo rūsyje arba vidinėje patalpoje be langų, tokioje kaip sandėliukas ar vonios kambarys [2, 3]. Venkite langų, balkonų, liftų ir atvirų erdvių, taip pat patalpų paskutiniame pastato aukšte [3].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 86,
+          "latency_ms": 1191.3,
+          "error": ""
+        },
+        {
+          "id": "shelter-sign",
+          "question": "Kaip atpažinti priedangą?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Priedangos Lietuvoje pažymėtos specialiu ženklu – tai geltonas kvadratas su užrašu „Priedanga“ [1, 3]. Priedangomis gali būti požeminės automobilių stovėjimo aikštelės, garažai, rūsiai, tuneliai, įmonių ar sporto įstaigų sanitarinės buitinės patalpos, nedegių medžiagų sandėliai ir kita [1]. Priedangų sąrašą ir žemėlapį galite rasti LT72 svetainėje [4]. Jei šalia nėra priedangos, galite slėptis saugioje vietoje, pavyzdžiui, namo rūsyje arba vidinėje patalpoje be langų [2, 3].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 64,
+          "latency_ms": 1122.7,
+          "error": ""
+        },
+        {
+          "id": "alert-red",
+          "question": "Ką reiškia raudonas perspėjimas apie oro pavojų?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Ar teisingai supratau – Raudonės seniūnija (Jurbarko r. sav.)? Raudonas perspėjimas reiškia, kad nurodytoje teritorijoje nustatyta reali oro atakos grėsmė, kelianti tiesioginį pavojų gyventojams [2]. Jūs turite nedelsdami skubėti į artimiausią saugią vietą, pavyzdžiui, rūsį, vonios kambarį, sandėliuką ar kitą patalpą be langų, arba į priedangą [2]. Raudonės seniūnijoje yra priedanga Raudonės pilyje, Pilies 1, Raudonės k., kurioje telpa apie 133 žmonės [1]. Sekite LRT informaciją ir tolesnius perspėjimo pranešimus [2].",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 71,
+          "latency_ms": 1160.2,
+          "error": ""
+        },
+        {
+          "id": "alert-white",
+          "question": "Kada galima išeiti iš priedangos?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Priedangą galite palikti tik gavę perspėjimo pranešimą apie pavojaus pabaigą, kuris yra baltos kategorijos [1]. Taip pat galite išeiti gavę kitus oficialius atsakingų institucijų nurodymus [1]. Jei negaunate naujo pranešimo, tęskite paskutinių nurodymų vykdymą [1].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 35,
+          "latency_ms": 732.4,
+          "error": ""
+        },
+        {
+          "id": "take-to-shelter",
+          "question": "Ką pasiimti einant į priedangą?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Jeigu turite laiko ir tai nesukelia papildomo pavojaus, pasiimkite mobilųjį telefoną, įkroviklį arba išorinę bateriją [1]. Taip pat pasiimkite asmens dokumentą, būtiniausius vaistus ir geriamojo vandens [1]. Svarbiausia – nedelsti ir kuo greičiau pasiekti saugią vietą [1].",
+          "points_total": 4,
+          "points_hit": 4,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 37,
+          "latency_ms": 696.8,
+          "error": ""
+        },
+        {
+          "id": "school-child",
+          "question": "Ar reikia važiuoti pasiimti vaiko iš mokyklos per oro pavojų?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Ne, Jums nereikia vykti pasiimti vaiko iš mokyklos ar darželio [1]. Gavus perspėjimą apie oro pavojų, ugdymo įstaigos vykdo savo ekstremaliųjų situacijų valdymo planus ir nukreipia vaikus į saugias vietas arba priedangas [1]. Tėvai neturėtų vykti į mokyklą ar darželį, kol nėra gautas pranešimas apie pavojaus pabaigą arba kiti oficialūs nurodymai [1].",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 52,
+          "latency_ms": 794.8,
+          "error": ""
+        },
+        {
+          "id": "go-bag",
+          "question": "Ką įsidėti į išvykimo krepšį?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Į išvykimo krepšį įsidėkite radijo imtuvą, įkroviklį, išorinę bateriją ir žibintuvėlį su elementais [3]. Taip pat įsidėkite atsarginį rūbų komplektą pagal sezoną, tvirtus batus, pirštines, higienos priemones, miegmaišį ir miego kilimėlį [4]. Nepamirškite švilpuko, virvės, peilio arba daugiafunkcio įrankio, kompaso ir žemėlapio [4]. Išvykimo krepšys padės pasirūpinti savimi ir artimaisiais pirmąsias 72 valandas [2].",
+          "points_total": 4,
+          "points_hit": 1,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 54,
+          "latency_ms": 1073.7,
+          "error": ""
+        },
+        {
+          "id": "power-outage",
+          "question": "Pas mus dingo elektra, ką daryt?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Jei dingo elektra, pirmiausia praneškite apie pavojingą situaciją ESO nemokamu numeriu 1852 [1]. Taip pat iš kištukinių lizdų ištraukite kompiuterio ir visų kitų elektroninių buities prietaisų maitinimą [2]. Jei prognozuojama smarki liūtis ar potvyniai, išjunkite viso namo ar buto elektros įvado automatinius jungiklius [2].",
+          "points_total": 3,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 44,
+          "latency_ms": 868.5,
+          "error": ""
+        },
+        {
+          "id": "fallen-wire",
+          "question": "Matau nutrūkusį elektros laidą ant žemės, ką daryti?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Pastebėję nukritusį elektros oro linijos laidą, pasirūpinkite, kad prie jo nesiartintų žmonės ir gyvuliai [1]. Nelieskite ant laidų užvirtusių medžių ar oro linijų atramų, nes jie gali kelti pavojų Jūsų gyvybei [1]. Apie pastebėtą grėsmę praneškite klientų aptarnavimo telefonu +370 660 01852 [1].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 43,
+          "latency_ms": 736.3,
+          "error": ""
+        },
+        {
+          "id": "chemical",
+          "question": "Paskelbė cheminį pavojų, ką daryti?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Įsijunkite radiją ir televiziją, nes Jums nuolatos bus teikiama naujausia informacija ir rekomendacijos, kaip elgtis [1]. Esant cheminės taršos pavojui, labai svarbu veikti greitai [1]. Negalima valgyti, gerti, rūkyti, jei esate pavojingomis cheminėmis medžiagomis užterštoje teritorijoje [1].",
+          "points_total": 3,
+          "points_hit": 1,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 37,
+          "latency_ms": 814.8,
+          "error": ""
+        },
+        {
+          "id": "when-112",
+          "question": "Kada reikia skambinti 112?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Numeriu 112 skambinkite, kai staiga iškyla reali grėsmė gyvybei, sveikatai, saugumui, aplinkai ar turtui ir kai pagalbos tarnybos turi nedelsdamos atvykti bei suteikti skubią pagalbą [1]. Pavyzdžiui, skambinkite, jei dega pastatas, matote eismo įvykį su nukentėjusiais žmonėmis, aptinkate į sprogmenį panašų daiktą, matote sukniubusį ar be sąmonės esantį žmogų [1]. Taip pat skambinkite, jei kraujuojate ir negalite sustabdyti kraujavimo, žmogus dūsta, negali kvėpuoti ar patyrė elektros traumą [1].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 68,
+          "latency_ms": 1075.5,
+          "error": ""
+        },
+        {
+          "id": "drone",
+          "question": "Pamačiau droną, ką daryti?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Jei pamatėte droną, nedelsdami eikite į pastato vidų arba priedangą [1]. Venkite atvirų erdvių, balkonų ir langų, slėpkitės laikydamiesi dviejų sienų taisyklės [1]. Nesiartinkite prie drono, nes jis gali būti pavojingas [1]. Jei turite galimybę, užfiksuokite informaciją ir perduokite ją telefonu 112 [1].",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 43,
+          "latency_ms": 777.3,
+          "error": ""
+        },
+        {
+          "id": "no-alert-received",
+          "question": "Kodėl negavau perspėjimo pranešimo į telefoną?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Jeigu negavote perspėjimo pranešimo, rekomenduojama patikrinti telefono nustatymus ir įsitikinti, kad perspėjimo pranešimų funkcija yra aktyvuota [1]. Taip pat svarbu, kad telefonas būtų įjungtas ir jo programinė įranga būtų atnaujinta [1]. Telefonuose, kuriuose naudojamos dvi SIM kortelės, korinio transliavimo funkcija visada nustatoma tik įjungus pirmąją SIM kortelę [1].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 48,
+          "latency_ms": 765.9,
+          "error": ""
+        },
+        {
+          "id": "emergency-smoke",
+          "question": "Kažkoks dūmas, sunku kvėpuoti, kaimynui bloga.",
+          "expected_action": "emergency_transfer",
+          "action": "emergency_transfer",
+          "answer": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112. Dabar jus sujungsiu su operatoriumi.",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": false,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 14,
+          "latency_ms": 1.0,
+          "error": ""
+        },
+        {
+          "id": "wants-human",
+          "question": "Ar aš kalbu su žmogumi? Noriu su žmogumi.",
+          "expected_action": "operator_transfer",
+          "action": "operator_transfer",
+          "answer": "Ne, aš esu dirbtinio intelekto sistema. Sujungiu su operatoriumi.",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": false,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 9,
+          "latency_ms": 0.5,
+          "error": ""
+        },
+        {
+          "id": "russian",
+          "question": "Здравствуйте, где ближайшее укрытие?",
+          "expected_action": "language_transfer",
+          "action": "language_transfer",
+          "answer": "Здравствуйте. Эта линия работает на литовском языке. Сейчас я соединю вас с оператором. Если есть угроза жизни или здоровью, звоните 112.",
+          "points_total": 1,
+          "points_hit": 1,
+          "cited": false,
+          "lt_ok": false,
+          "phone_style_ok": true,
+          "words": 21,
+          "latency_ms": 0.0,
+          "error": ""
+        },
+        {
+          "id": "off-topic",
+          "question": "Kokia rytoj bus krepšinio rungtynių pradžia?",
+          "expected_action": "no_info",
+          "action": "no_info",
+          "answer": "Šiuo klausimu patikimos informacijos neturiu. Daugiau informacijos rasite svetainėje lt72.lt arba paskambinę į visą parą veikiančią konsultavimo liniją 1856. Jei kyla pavojus gyvybei ar sveikatai, skambinkite 112.",
+          "points_total": 1,
+          "points_hit": 1,
+          "cited": false,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 27,
+          "latency_ms": 0.6,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "metrics": {
+        "provider": "mistral:mistral-large-latest",
+        "n": 18,
+        "action_accuracy": 1.0,
+        "point_coverage": 0.921,
+        "answer_point_coverage": 0.899,
+        "citation_rate": 1.0,
+        "lithuanian_rate": 1.0,
+        "phone_style_rate": 1.0,
+        "avg_words": 46,
+        "latency_p50_ms": 3136.0,
+        "latency_p95_ms": 3696.0,
+        "errors": 0
+      },
+      "items": [
+        {
+          "id": "shelter-generic",
+          "question": "Kur man slėptis, jei paskelbtų oro pavojų?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Jei paskelbtas oro pavojus, nedelsdami skubėkite į artimiausią priedangą arba saugią vietą [1][3]. Pasirinkite patalpą be langų, pavyzdžiui, rūsį, sandėliuką ar vonios kambarį [2].\n\nJei netoliese yra priedanga, pažymėta geltonu ženklu su užrašu „Priedanga“, vykite ten [1]. Venkite langų, balkonų ir paskutinio aukšto patalpų [2].",
+          "points_total": 3,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 45,
+          "latency_ms": 2939.6,
+          "error": ""
+        },
+        {
+          "id": "shelter-eldership",
+          "question": "Laba diena, kur man slėptis, jei paskelbtų oro pavojų? Gyvenu Žirmūnuose.",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Ar teisingai supratau – Žirmūnų seniūnija (Vilniaus m. sav.)? Skubėkite į artimiausią priedangą. Jums artimiausios – Verkių gatvės 39 arba Olimpiečių gatvės 3E daugiabučiai su požeminiais parkingais, pritaikyti asmenims su negalia [1].\n\nJei priedangos nėra šalia, slėpkitės rūsje, vidinėje patalpoje be langų arba vietoje, kur tarp jūsų ir pastato išorės yra bent dvi sienos [2][3]. Venkite langų ir balkonų [3].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 60,
+          "latency_ms": 3695.5,
+          "error": ""
+        },
+        {
+          "id": "shelter-sign",
+          "question": "Kaip atpažinti priedangą?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Ieškokite geltono kvadrato su užrašu „Priedanga“ – tai oficialus ženklas [1].\n\nJei tokio ženklo nėra, patikrinkite, ar vieta pažymėta LT72 svetainėje [4].\n\nPriedangomis gali būti požeminės aikštelės, garažai, rūsiai ar tuneliai [1].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 32,
+          "latency_ms": 2167.8,
+          "error": ""
+        },
+        {
+          "id": "alert-red",
+          "question": "Ką reiškia raudonas perspėjimas apie oro pavojų?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Ar teisingai supratau – Raudonės seniūnija (Jurbarko r. sav.)? Raudonas perspėjimas apie oro pavojų reiškia, kad jūsų teritorijoje nustatyta reali oro atakos grėsmė, kelianti tiesioginį pavojų gyventojams. Nedelsdami skubėkite į artimiausią saugią vietą ar priedangą, pavyzdžiui, Raudonės pilį Raudonės kaime [1].\n\nLikite patalpose be langų, sekite oficialią informaciją per LRT ir vykdykite tolesnius perspėjimo pranešimus [2]. Neišeikite iš saugios vietos, kol negausite balto perspėjimo [4].",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 65,
+          "latency_ms": 3309.8,
+          "error": ""
+        },
+        {
+          "id": "alert-white",
+          "question": "Kada galima išeiti iš priedangos?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Palikite priedangą tik gavę oficialų pranešimą apie pavojaus pabaigą, vadinamą baltą kategoriją. Jei tokio pranešimo negavote, laikykitės paskutinių gautų nurodymų. Nesitraukite be aiškaus leidimo iš atsakingų institucijų [1].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 28,
+          "latency_ms": 1950.3,
+          "error": ""
+        },
+        {
+          "id": "take-to-shelter",
+          "question": "Ką pasiimti einant į priedangą?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Kuo greičiau eikite į saugią vietą ar priedangą, nes tai svarbiausia [1].\n\nJei turite laiko ir tai nesukelia pavojaus, pasiimkite mobilųjį telefoną su įkrovikliu ar išorine baterija [1].\nPasiimkite asmens dokumentą ir būtiniausius vaistus [1].\nGerkite tik paruoštą geriamąjį vandenį [1].",
+          "points_total": 4,
+          "points_hit": 4,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 41,
+          "latency_ms": 2587.3,
+          "error": ""
+        },
+        {
+          "id": "school-child",
+          "question": "Ar reikia važiuoti pasiimti vaiko iš mokyklos per oro pavojų?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Neskubėkite vykti pasiimti vaiko iš mokyklos ar darželio. Ugdymo įstaigos turi savo ekstremaliųjų situacijų planus ir nukreipia vaikus į saugias vietas [1].\n\nPalaukite oficialaus pranešimo apie pavojaus pabaigą arba kitų nurodymų [1]. Jei nerimaujate, galite kreiptis į konsultavimo liniją 1856.",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 40,
+          "latency_ms": 2557.3,
+          "error": ""
+        },
+        {
+          "id": "go-bag",
+          "question": "Ką įsidėti į išvykimo krepšį?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Pirmiausia pasirūpinkite, kad krepšys būtų ne sunkesnis nei penktadalis jūsų svorio [1]. Pasirinkite maždaug 45 litrų talpos kuprinę [1].\n\nĮsidėkite būtiniausių daiktų, kurie padės išgyventi pirmąsias 72 valandas [2]. Kiekvienam šeimos nariui paruoškite atskirą krepšį, pritaikytą amžiui ir poreikiams [2].\n\nĮsidėkite radijo imtuvą, žibintuvėlį, įkroviklį ir išorinę bateriją [3]. Nepamirškite atsarginio rūbų komplekto, higienos priemonių ir miegmaišio [4].",
+          "points_total": 4,
+          "points_hit": 1,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 58,
+          "latency_ms": 4431.6,
+          "error": ""
+        },
+        {
+          "id": "power-outage",
+          "question": "Pas mus dingo elektra, ką daryt?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Pirmiausia patikrinkite, ar elektros nėra tik jūsų bute ar name. Jei taip, patikrinkite skydinėje, ar neveikia automatiniai saugikliai [2].\n\nJei elektros nėra visoje gatvėje ar rajone, nedelsdami praneškite ESO nemokamu numeriu 1852 [1].\n\nIšjunkite visus elektroninius prietaisus iš lizdų, kad išvengtuméte galimų gedimų atkūrus tiekimą [2].",
+          "points_total": 3,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 46,
+          "latency_ms": 3269.3,
+          "error": ""
+        },
+        {
+          "id": "fallen-wire",
+          "question": "Matau nutrūkusį elektros laidą ant žemės, ką daryti?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Pirmiausia nedelsdami paskambinkite į 112 ir praneškite apie nutrūkusį elektros laidą.\n\nNesiartinkite prie laido ir neleiskite kitų žmonių ar gyvūnų prie jo artintis.\n\nNekiškite rankų ar daiktų prie laido, nes tai gali kelti mirtiną pavojų [1].\n\nPraneškite apie situaciją elektros tinklus prižiūrinčiai įmonei skambindami numeriu 370 660 01852 [1].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 49,
+          "latency_ms": 3605.8,
+          "error": ""
+        },
+        {
+          "id": "chemical",
+          "question": "Paskelbė cheminį pavojų, ką daryti?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Skambinkite 112, jei esate pavojingoje zonoje ar jaučiate sveikatos sutrikimų. Nedelsdami eikite į patalpą ir užsidarykite langus bei duris. Įsijunkite radiją ar televiziją, kad gautumėte naujausią informaciją ir nurodymus [1].\n\nApsaugokite kvėpavimo takus, akis ir odą, jei turite apsaugos priemonių. Venkite valgyti, gerti ar rūkyti užterštoje teritorijoje [1].",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 48,
+          "latency_ms": 3291.0,
+          "error": ""
+        },
+        {
+          "id": "when-112",
+          "question": "Kada reikia skambinti 112?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Skambinkite 112, kai kyla tiesioginė grėsmė gyvybei, sveikatai ar turtui ir reikia neatidėliotinos pagalbos [1].\n\nPavyzdžiui, jei dega pastatas, matote sunkų eismo įvykį su nukentėjusiaisiais arba žmogus neteko sąmonės [1].\n\nJei esate negalios turintis asmuo ir kyla pavojus, taip pat skambinkite 112 [3].",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 43,
+          "latency_ms": 3002.0,
+          "error": ""
+        },
+        {
+          "id": "drone",
+          "question": "Pamačiau droną, ką daryti?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Nedelsdami eikite į pastato vidų arba saugią priedangą [1]. Venkite atvirų erdvių, balkonų ir langų, laikykitės dviejų sienų taisyklės [1]. Nesiartinkite prie drono, nes jis gali būti pavojingas [1]. Jei galite, užfiksuokite informaciją ir perduokite ją skambindami 112 [1].",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 39,
+          "latency_ms": 2503.9,
+          "error": ""
+        },
+        {
+          "id": "no-alert-received",
+          "question": "Kodėl negavau perspėjimo pranešimo į telefoną?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Patikrinkite, ar jūsų telefone aktyvuota korinio transliavimo funkcija. Įsitikinkite, kad telefonas yra įjungtas ir programinė įranga atnaujinta [1].\n\nJei naudojate dvi SIM korteles, korinio transliavimo funkcija veikia tik su pirmąja SIM kortele [1].\n\nJei viskas tinkamai nustatyta, bet pranešimo vis tiek negavote, kreipkitės į konsultavimo liniją 1856 arba aplankykite lt72.lt.",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 50,
+          "latency_ms": 3378.9,
+          "error": ""
+        },
+        {
+          "id": "emergency-smoke",
+          "question": "Kažkoks dūmas, sunku kvėpuoti, kaimynui bloga.",
+          "expected_action": "emergency_transfer",
+          "action": "emergency_transfer",
+          "answer": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112. Dabar jus sujungsiu su operatoriumi.",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": false,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 14,
+          "latency_ms": 1.0,
+          "error": ""
+        },
+        {
+          "id": "wants-human",
+          "question": "Ar aš kalbu su žmogumi? Noriu su žmogumi.",
+          "expected_action": "operator_transfer",
+          "action": "operator_transfer",
+          "answer": "Ne, aš esu dirbtinio intelekto sistema. Sujungiu su operatoriumi.",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": false,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 9,
+          "latency_ms": 0.9,
+          "error": ""
+        },
+        {
+          "id": "russian",
+          "question": "Здравствуйте, где ближайшее укрытие?",
+          "expected_action": "language_transfer",
+          "action": "language_transfer",
+          "answer": "Здравствуйте. Эта линия работает на литовском языке. Сейчас я соединю вас с оператором. Если есть угроза жизни или здоровью, звоните 112.",
+          "points_total": 1,
+          "points_hit": 1,
+          "cited": false,
+          "lt_ok": false,
+          "phone_style_ok": true,
+          "words": 21,
+          "latency_ms": 0.1,
+          "error": ""
+        },
+        {
+          "id": "off-topic",
+          "question": "Kokia rytoj bus krepšinio rungtynių pradžia?",
+          "expected_action": "no_info",
+          "action": "no_info",
+          "answer": "Šiuo klausimu patikimos informacijos neturiu. Daugiau informacijos rasite svetainėje lt72.lt arba paskambinę į visą parą veikiančią konsultavimo liniją 1856. Jei kyla pavojus gyvybei ar sveikatai, skambinkite 112.",
+          "points_total": 1,
+          "points_hit": 1,
+          "cited": false,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 27,
+          "latency_ms": 2.9,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "metrics": {
+        "provider": "mock:extractive",
+        "n": 18,
+        "action_accuracy": 1.0,
+        "point_coverage": 0.787,
+        "answer_point_coverage": 0.726,
+        "citation_rate": 1.0,
+        "lithuanian_rate": 1.0,
+        "phone_style_rate": 0.714,
+        "avg_words": 47.9,
+        "latency_p50_ms": 1.0,
+        "latency_p95_ms": 1.0,
+        "errors": 0
+      },
+      "items": [
+        {
+          "id": "shelter-generic",
+          "question": "Kur man slėptis, jei paskelbtų oro pavojų?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Svarbu: oro pavojaus atveju gyventojams rekomenduojama vykti į artimiausią priedangą, o jei jos nėra šalia – slėptis kitoje saugioje vietoje, pavyzdžiui, namo rūsyje arba vidinėje patalpoje be langų (rūsys, sandėliukas, vonios kambarys, kita vieta, atrinkta remiantis dviejų sienų taisykle). [1]",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 40,
+          "latency_ms": 1.0,
+          "error": ""
+        },
+        {
+          "id": "shelter-eldership",
+          "question": "Laba diena, kur man slėptis, jei paskelbtų oro pavojų? Gyvenu Žirmūnuose.",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Ar teisingai supratau – Žirmūnų seniūnija (Vilniaus m. sav.)? Priedangos Žirmūnų seniūnijoje (Vilniaus m. sav.): 1) Daugiabutis namas su požeminiu parkingu, Verkių g. 39 (talpa apie 6428 žm.), pritaikyta asmenims su negalia; 2) Daugiabutis namas su požeminiu parkingu, Olimpiečių g. [1]",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 41,
+          "latency_ms": 0.9,
+          "error": ""
+        },
+        {
+          "id": "shelter-sign",
+          "question": "Kaip atpažinti priedangą?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Priedanga – vieta, skirta trumpalaikei (iki kelių valandų) apsaugai kilus oro pavojui bei tiesioginio ir netiesioginio apšaudymo grėsmei karinės agresijos metu (nuo tiesioginių atakų iš orlaivių, raketų, artilerijos ugnies, nuo skeveldrų, nuolaužų, sprogimo smūgio bangų, atsitiktinių kulkų). Visos priedangos Lietuvoje pažymėtos specialiu ženklu (geltonas kvadratas su užrašu PRIEDANGA). Priedangomis gali būti požeminės automobilių stovėjimo aikštelės, garažai, rūsiai, technologiniai, transporto ir pėsčiųjų tuneliai, įmonių, sporto įstaigų sanitarinės buitinės patalpos (rūbinė, dušas, rūsys ir pan.), nedegių medžiagų sandėliai ir kt. [1]",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 79,
+          "latency_ms": 1.0,
+          "error": ""
+        },
+        {
+          "id": "alert-red",
+          "question": "Ką reiškia raudonas perspėjimas apie oro pavojų?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Ar teisingai supratau – Raudonės seniūnija (Jurbarko r. sav.)? Priedangos Raudonės seniūnijoje (Jurbarko r. sav.): 1) Raudonės pilis, Pilies 1, Raudonės k. (talpa apie 133 žm.). [1]",
+          "points_total": 3,
+          "points_hit": 1,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 27,
+          "latency_ms": 0.7,
+          "error": ""
+        },
+        {
+          "id": "alert-white",
+          "question": "Kada galima išeiti iš priedangos?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Priedangą ar saugią vietą palikite tik gavę perspėjimo pranešimą apie pavojaus pabaigą (balta kategorija) arba kitus oficialius atsakingų institucijų nurodymus. Negavę naujo pranešimo, tęskite paskutinių nurodymų vykdymą. [1]",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 28,
+          "latency_ms": 0.5,
+          "error": ""
+        },
+        {
+          "id": "take-to-shelter",
+          "question": "Ką pasiimti einant į priedangą?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Jeigu turite laiko ir tai nesukelia papildomo pavojaus, pasiimkite mobilųjį telefoną, įkroviklį arba išorinę bateriją, asmens dokumentą, būtiniausius vaistus ir geriamojo vandens. Tačiau svarbiausia – nedelsti ir kuo greičiau pasiekti saugią vietą. [1]",
+          "points_total": 4,
+          "points_hit": 4,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 33,
+          "latency_ms": 0.6,
+          "error": ""
+        },
+        {
+          "id": "school-child",
+          "question": "Ar reikia važiuoti pasiimti vaiko iš mokyklos per oro pavojų?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Ne. Gavus perspėjimą apie oro pavojų ugdymo įstaigos vykdo savo ekstremaliųjų situacijų valdymo planus ir nukreipia vaikus į saugias vietas arba priedangas. Tėvai neturėtų vykti į mokyklą ar darželį, kol nėra gautas pranešimas apie pavojaus pabaigą arba kiti oficialūs nurodymai. [1]",
+          "points_total": 3,
+          "points_hit": 3,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 41,
+          "latency_ms": 0.7,
+          "error": ""
+        },
+        {
+          "id": "go-bag",
+          "question": "Ką įsidėti į išvykimo krepšį?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Rekomendacinė išvykimo krepšio svorio norma yra ne daugiau kaip penktadalis žmogaus svorio. Išvykimo krepšys turėtų būti maždaug 45 l kuprinė. [1]",
+          "points_total": 4,
+          "points_hit": 0,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 21,
+          "latency_ms": 0.5,
+          "error": ""
+        },
+        {
+          "id": "power-outage",
+          "question": "Pas mus dingo elektra, ką daryt?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Apie pavojingą situaciją nedelsiant praneškite ESO nemokamu numeriu 1852 [1]",
+          "points_total": 3,
+          "points_hit": 1,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 10,
+          "latency_ms": 0.5,
+          "error": ""
+        },
+        {
+          "id": "fallen-wire",
+          "question": "Matau nutrūkusį elektros laidą ant žemės, ką daryti?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "- Įsidėmėkite, kad be elektros tinklus prižiūrinčio ESO raštiško susitikimo draudžiama elektros tinklų apsaugos zonose statyti, remontuoti ar griauti statinius, nes tai gali būti pavojinga; - Elektros tinklų apsaugos zonose nevykdykite krovimo, melioravimo darbų, nenaudokite mechaninių laistytuvų, neįrenkite aikštelių gyvuliams, nestatykite vielinių tvorų; - Prisiminkite, kad už elektros tinklų apsaugos zonų negalima savarankiškai sodinti arba kirsti medžių, ypač tokių, kurie gali griūti ant laidų. Apie pastebėtą grėsmę būtinai praneškite klientų aptarnavimo tel. +370 660 01852*; - Atminkite, kad apsauginėse zonose pavojinga važinėti mašinomis, aukštesnėmis nei 4,5 metro, bei atlikti žemės darbus giliau nei 30 cm. [1]",
+          "points_total": 2,
+          "points_hit": 1,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": false,
+          "words": 96,
+          "latency_ms": 1.2,
+          "error": ""
+        },
+        {
+          "id": "chemical",
+          "question": "Paskelbė cheminį pavojų, ką daryti?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Įvykus avarijai, kurios metu į aplinką pateko pavojingos cheminės medžiagos arba kai gresia tiesioginis cheminės taršos pavojus, skelbiamas civilinės saugos signalas „Cheminis pavojus“, kuris perduodamas per visuomenės informavimo priemones. Įsijunkite radiją ir televiziją, nes jums nuolatos bus teikiama naujausia informacija ir rekomendacijos, kaip elgtis. Žinotina, kad: - esant cheminės taršos pavojui, labai svarbu veikti greitai; - pavojingos cheminės medžiagos yra itin lakios ir stipriai dirgina kvėpavimo takus, akių gleivinę, odą, todėl būtina, kad šios kūno dalys būtų apsaugotos; - negalima valgyti, gerti, rūkyti, jei esate pavojingomis cheminėmis medžiagomis užterštoje teritorijoje. [1]",
+          "points_total": 3,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": false,
+          "words": 91,
+          "latency_ms": 1.1,
+          "error": ""
+        },
+        {
+          "id": "when-112",
+          "question": "Kada reikia skambinti 112?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Skubiosios pagalbos tarnybų ryšio numeriu 112 skambinkite tik tada, kai staiga iškyla reali grėsmė gyvybei, sveikatai, saugumui, aplinkai ar turtui ir kai pagalbos tarnybos turi nedelsdamos atvykti į nelaimės vietą bei suteikti skubią pagalbą, pavyzdžiui, kai: - dega pastatas, automobilis, miškas, iš pastatų rūksta dūmai; - pamatote eismo įvykį, kurio metu nukenčia žmonės; - aptinkate į sprogmenį panašų daiktą; - matote sukniubusį ar gulintį žmogų ir įtariate, kad jis gali būti be sąmonės; - kraujuojate ir negalite sustabdyti kraujavimo; - matote, kad žmogus dūsta, negali kvėpuoti; - matote, kad žmogus patyrė elektros traumą. [1]",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": false,
+          "words": 94,
+          "latency_ms": 1.0,
+          "error": ""
+        },
+        {
+          "id": "drone",
+          "question": "Pamačiau droną, ką daryti?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "- Išlikite budrūs ir ramūs. - Nedelsdami eikite į pastato vidų arba priedangą. - Venkite atvirų erdvių, balkonų ir langų. [1]",
+          "points_total": 3,
+          "points_hit": 1,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": false,
+          "words": 21,
+          "latency_ms": 0.5,
+          "error": ""
+        },
+        {
+          "id": "no-alert-received",
+          "question": "Kodėl negavau perspėjimo pranešimo į telefoną?",
+          "expected_action": "answer",
+          "action": "answer",
+          "answer": "Jeigu perspėjimo pranešimo negavote, rekomenduojama patikrinti telefono nustatymus ir įsitikinti, kad perspėjimo pranešimų (korinės transliacijos) funkcija yra aktyvuota. Taip pat svarbu, kad telefonas būtų įjungtas ir jo programinė įranga būtų atnaujinta. Telefono aparatuose, kuriuose naudojamos dvi SIM kortelės, korinio transliavimo funkcija visada nustatoma tik įjungus pirmąją SIM kortelę. [1]",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": true,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 49,
+          "latency_ms": 0.8,
+          "error": ""
+        },
+        {
+          "id": "emergency-smoke",
+          "question": "Kažkoks dūmas, sunku kvėpuoti, kaimynui bloga.",
+          "expected_action": "emergency_transfer",
+          "action": "emergency_transfer",
+          "answer": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112. Dabar jus sujungsiu su operatoriumi.",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": false,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 14,
+          "latency_ms": 0.2,
+          "error": ""
+        },
+        {
+          "id": "wants-human",
+          "question": "Ar aš kalbu su žmogumi? Noriu su žmogumi.",
+          "expected_action": "operator_transfer",
+          "action": "operator_transfer",
+          "answer": "Ne, aš esu dirbtinio intelekto sistema. Sujungiu su operatoriumi.",
+          "points_total": 2,
+          "points_hit": 2,
+          "cited": false,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 9,
+          "latency_ms": 0.2,
+          "error": ""
+        },
+        {
+          "id": "russian",
+          "question": "Здравствуйте, где ближайшее укрытие?",
+          "expected_action": "language_transfer",
+          "action": "language_transfer",
+          "answer": "Здравствуйте. Эта линия работает на литовском языке. Сейчас я соединю вас с оператором. Если есть угроза жизни или здоровью, звоните 112.",
+          "points_total": 1,
+          "points_hit": 1,
+          "cited": false,
+          "lt_ok": false,
+          "phone_style_ok": true,
+          "words": 21,
+          "latency_ms": 0.0,
+          "error": ""
+        },
+        {
+          "id": "off-topic",
+          "question": "Kokia rytoj bus krepšinio rungtynių pradžia?",
+          "expected_action": "no_info",
+          "action": "no_info",
+          "answer": "Šiuo klausimu patikimos informacijos neturiu. Daugiau informacijos rasite svetainėje lt72.lt arba paskambinę į visą parą veikiančią konsultavimo liniją 1856. Jei kyla pavojus gyvybei ar sveikatai, skambinkite 112.",
+          "points_total": 1,
+          "points_hit": 1,
+          "cited": false,
+          "lt_ok": true,
+          "phone_style_ok": true,
+          "words": 27,
+          "latency_ms": 0.5,
+          "error": ""
+        }
+      ]
+    }
+  ],
+  "speech": [
+    {
+      "tts": "elevenlabs:CwhRBWXzGAHq8TQ4Fs17",
+      "stt": "elevenlabs",
+      "wer": 0.014,
+      "cer": 0.004,
+      "tts_ms": 853,
+      "stt_ms": 1618,
+      "errors": 0,
+      "phone_channel": true,
+      "samples": [
+        {
+          "ref": "Oro pavojaus atveju vykite į artimiausią priedangą arba slėpkitės rūsyje.",
+          "hyp": "Oro pavojaus atveju vykite į artimiausią priedangą arba slėpkitės rūsyje."
+        },
+        {
+          "ref": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112.",
+          "hyp": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite vienas vienas du"
+        },
+        {
+          "ref": "Apie elektros tiekimo sutrikimus praneškite ESO telefonu 1852.",
+          "hyp": "Apie elektros tiekimo sutrikimus praneškite ESO telefonu vienas aštuoni penki du."
+        },
+        {
+          "ref": "Išvykimo krepšyje turėkite dokumentus, vaistų ir vandens 72 valandoms.",
+          "hyp": "Išvykimo krepšyje turėkite dokumentus, vaistų ir vandens septyniasdešimt dviem valandoms."
+        },
+        {
+          "ref": "Esant cheminei taršai uždarykite langus ir duris, išjunkite vėdinimą.",
+          "hyp": "Esant cheminiai taršai uždarykite langus ir duris, išjunkite vėdinimą"
+        },
+        {
+          "ref": "Priedangos pažymėtos geltonu kvadratu su užrašu PRIEDANGA.",
+          "hyp": "Priedangos pažymėtos geltonu kvadratu su užrašu „priedanga“."
+        },
+        {
+          "ref": "Konsultavimo linija 1856 veikia visą parą, septynias dienas per savaitę.",
+          "hyp": "Konsultavimo linija 1856 veikia visą parą, septynias dienas per savaitę"
+        },
+        {
+          "ref": "Žirmūnų seniūnijoje artimiausia priedanga yra požeminėje automobilių stovėjimo aikštelėje.",
+          "hyp": "Žirmūnų seniūnijoje artimiausia priedanga yra požeminėje automobilių stovėjimo aikštelėje"
+        }
+      ]
+    },
+    {
+      "tts": "elevenlabs:CwhRBWXzGAHq8TQ4Fs17",
+      "stt": "gemini",
+      "wer": 0.047,
+      "cer": 0.007,
+      "tts_ms": 853,
+      "stt_ms": 1783,
+      "errors": 0,
+      "phone_channel": true,
+      "samples": [
+        {
+          "ref": "Oro pavojaus atveju vykite į artimiausią priedangą arba slėpkitės rūsyje.",
+          "hyp": "Oro pavojaus atveju, vykite į artimiausią priedangą arba slėpkitės rūsyje."
+        },
+        {
+          "ref": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112.",
+          "hyp": "Štai kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112."
+        },
+        {
+          "ref": "Apie elektros tiekimo sutrikimus praneškite ESO telefonu 1852.",
+          "hyp": "Apie elektros tiekimo sutrikimus praneškite ESO telefonu 1852."
+        },
+        {
+          "ref": "Išvykimo krepšyje turėkite dokumentus, vaistų ir vandens 72 valandoms.",
+          "hyp": "Išvykimo krepšyje turėkite dokumentus, vaistų ir vandens 72 valandoms."
+        },
+        {
+          "ref": "Esant cheminei taršai uždarykite langus ir duris, išjunkite vėdinimą.",
+          "hyp": "Esant cheminei taršai, uždarykite langus ir duris. Išjunkite vėdinimą."
+        },
+        {
+          "ref": "Priedangos pažymėtos geltonu kvadratu su užrašu PRIEDANGA.",
+          "hyp": "Prie dangos pažymėtos geltonu kvadratu su užrašu priedanga."
+        },
+        {
+          "ref": "Konsultavimo linija 1856 veikia visą parą, septynias dienas per savaitę.",
+          "hyp": "Konsultavimo linija 1856 veikia visą parą, septynias dienas per savaitę."
+        },
+        {
+          "ref": "Žirmūnų seniūnijoje artimiausia priedanga yra požeminėje automobilių stovėjimo aikštelėje.",
+          "hyp": "Žirmūnų seniūnijoje artimiausia priedanga yra požeminėje automobilių stovėjimo aikštelėje."
+        }
+      ]
+    },
+    {
+      "tts": "gemini:Kore",
+      "stt": "elevenlabs",
+      "wer": 0.014,
+      "cer": 0.006,
+      "tts_ms": 4296,
+      "stt_ms": 1827,
+      "errors": 0,
+      "phone_channel": true,
+      "samples": [
+        {
+          "ref": "Oro pavojaus atveju vykite į artimiausią priedangą arba slėpkitės rūsyje.",
+          "hyp": "Oro pavojaus atveju vykite į artimiausią priedangą arba slėpkitės rūsyje."
+        },
+        {
+          "ref": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112.",
+          "hyp": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite vienas vienas du"
+        },
+        {
+          "ref": "Apie elektros tiekimo sutrikimus praneškite ESO telefonu 1852.",
+          "hyp": "Apie elektros tiekimo sutrikimus praneškite ESO telefonu vienas aštuoni penki du"
+        },
+        {
+          "ref": "Išvykimo krepšyje turėkite dokumentus, vaistų ir vandens 72 valandoms.",
+          "hyp": "Išvykimo krepšyje turėkite dokumentus, vaistų ir vandens septyniasdešimt dviem valandoms"
+        },
+        {
+          "ref": "Esant cheminei taršai uždarykite langus ir duris, išjunkite vėdinimą.",
+          "hyp": "Esant šiaminei taršai uždarykite langus ir duris, išjunkite vėdinimą."
+        },
+        {
+          "ref": "Priedangos pažymėtos geltonu kvadratu su užrašu PRIEDANGA.",
+          "hyp": "Priedangos pažymėtos geltonu kvadratu su užrašu priedanga."
+        },
+        {
+          "ref": "Konsultavimo linija 1856 veikia visą parą, septynias dienas per savaitę.",
+          "hyp": "Konsultavimo linija 1856 veikia visą parą, septynias dienas per savaitę"
+        },
+        {
+          "ref": "Žirmūnų seniūnijoje artimiausia priedanga yra požeminėje automobilių stovėjimo aikštelėje.",
+          "hyp": "Žirmūnų seniūnijoje artimiausia priedanga yra požeminėje automobilių stovėjimo aikštelėje"
+        }
+      ]
+    },
+    {
+      "tts": "gemini:Kore",
+      "stt": "gemini",
+      "wer": 0.032,
+      "cer": 0.011,
+      "tts_ms": 4296,
+      "stt_ms": 1670,
+      "errors": 0,
+      "phone_channel": true,
+      "samples": [
+        {
+          "ref": "Oro pavojaus atveju vykite į artimiausią priedangą arba slėpkitės rūsyje.",
+          "hyp": "Oro pavojaus atveju, vykite į artimiausią priedangą arba slėpkitės rūsyje."
+        },
+        {
+          "ref": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112.",
+          "hyp": "Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112."
+        },
+        {
+          "ref": "Apie elektros tiekimo sutrikimus praneškite ESO telefonu 1852.",
+          "hyp": "Apie elektros tiekimo sutrikimus praneškite ESO telefonu 1852."
+        },
+        {
+          "ref": "Išvykimo krepšyje turėkite dokumentus, vaistų ir vandens 72 valandoms.",
+          "hyp": "Išvykimo krepšyje turėkite dokumentus, vaistų ir vandens 72 valandoms."
+        },
+        {
+          "ref": "Esant cheminei taršai uždarykite langus ir duris, išjunkite vėdinimą.",
+          "hyp": "Esant cheminiai taršai, uždarykite langus ir duris. Išjunkite vėdinimą."
+        },
+        {
+          "ref": "Priedangos pažymėtos geltonu kvadratu su užrašu PRIEDANGA.",
+          "hyp": "Priedangos pažymėtos geltonu kvadratu su užrašu priedanga."
+        },
+        {
+          "ref": "Konsultavimo linija 1856 veikia visą parą, septynias dienas per savaitę.",
+          "hyp": "Konsultavimo linija 2856 veikia visą parą, septynias dienas per savaitę."
+        },
+        {
+          "ref": "Žirmūnų seniūnijoje artimiausia priedanga yra požeminėje automobilių stovėjimo aikštelėje.",
+          "hyp": "Žirmūnų seniūnijoje artimiausia priedanga yra požeminėje automobilių stovėjimo aikštelėje."
+        }
+      ]
+    }
+  ]
+}

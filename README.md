@@ -67,6 +67,20 @@ set -a; source api/.env; set +a
 Open <http://localhost:8000>. API documentation is at
 <http://localhost:8000/api/v1/docs>.
 
+## Knowledge Line (multilingual RAG voice Q&A, Lithuanian first)
+
+[`knowledge_line/`](knowledge_line/README.md) is a standalone, provider-configurable
+speech → retrieval-grounded LLM → speech module (no database needed). LLMs via LangChain
+(Gemini, Mistral), pluggable STT/TTS (ElevenLabs, Google Cloud, Gemini; Azure/Tilde stubs),
+offline mocks when keys are missing. It ships a Lithuanian civil-protection profile
+built from public sources (lt72.lt, PAGD shelter open data, 112), a Lithuanian TTS text
+normaliser and lexicon, an LT eval set and a provider comparison script.
+
+```bash
+.venv/bin/python -m knowledge_line.cli ask "Kur artimiausia priedanga Žirmūnuose?" --say /tmp/answer
+.venv/bin/python -m knowledge_line.web        # http://127.0.0.1:5055
+```
+
 ## Python SDK
 
 ```bash

@@ -1,0 +1,136 @@
+# Lithuanian evaluation set for the civil-protection profile.
+# expected_action: answer | no_info | emergency_transfer | operator_transfer | language_transfer
+# points: each point is a list of alternative phrasings; a point is "covered" if
+# any alternative appears in the answer (accent- and inflection-insensitive,
+# Lithuanian stemming). Answer points are taken from the cited public sources.
+items:
+  - id: shelter-generic
+    question: "Kur man slėptis, jei paskelbtų oro pavojų?"
+    expected_action: answer
+    points:
+      - ["priedang"]
+      - ["rūsy", "rūsį", "patalp be lang", "vonios kambar", "sandėliuk"]
+      - ["dviejų sienų", "dvi sienos"]
+    sources: [lt72.lt]
+  - id: shelter-eldership
+    question: "Laba diena, kur man slėptis, jei paskelbtų oro pavojų? Gyvenu Žirmūnuose."
+    expected_action: answer
+    points:
+      - ["Žirmūnų"]
+      - ["priedang"]
+    sources: [lt72.lt, data.gov.lt]
+  - id: shelter-sign
+    question: "Kaip atpažinti priedangą?"
+    expected_action: answer
+    points:
+      - ["geltonas kvadratas", "geltonu kvadratu", "geltonas"]
+      - ["PRIEDANGA", "užraš"]
+    sources: [lt72.lt]
+  - id: alert-red
+    question: "Ką reiškia raudonas perspėjimas apie oro pavojų?"
+    expected_action: answer
+    points:
+      - ["reali", "tiesiogin"]
+      - ["nedelsdami", "skubėti", "nedelsiant"]
+      - ["priedang", "saugią viet", "saug viet"]
+    sources: [lt72.lt]
+  - id: alert-white
+    question: "Kada galima išeiti iš priedangos?"
+    expected_action: answer
+    points:
+      - ["balt"]
+      - ["pranešim"]
+    sources: [lt72.lt]
+  - id: take-to-shelter
+    question: "Ką pasiimti einant į priedangą?"
+    expected_action: answer
+    points:
+      - ["telefon"]
+      - ["dokument"]
+      - ["vaist"]
+      - ["vanden"]
+    sources: [lt72.lt]
+  - id: school-child
+    question: "Ar reikia važiuoti pasiimti vaiko iš mokyklos per oro pavojų?"
+    expected_action: answer
+    points:
+      - ["ne"]
+      - ["mokykl", "ugdymo įstaig"]
+      - ["pavojaus pabaig", "pranešim"]
+    sources: [lt72.lt]
+  - id: go-bag
+    question: "Ką įsidėti į išvykimo krepšį?"
+    expected_action: answer
+    points:
+      - ["dokument"]
+      - ["vanden"]
+      - ["vaist", "pirmosios pagalbos"]
+      - ["72", "trims parom", "3 parom"]
+    sources: [lt72.lt]
+  - id: power-outage
+    question: "Pas mus dingo elektra, ką daryt?"
+    expected_action: answer
+    points:
+      - ["1852", "ESO"]
+      - ["prietais", "kištuk"]
+      - ["žibintuvėl", "žvak", "šviesos šaltin"]
+    sources: [eso.lt]
+  - id: fallen-wire
+    question: "Matau nutrūkusį elektros laidą ant žemės, ką daryti?"
+    expected_action: answer
+    points:
+      - ["nelieskite", "nesiartinkite", "atstum"]
+      - ["112", "1852"]
+    sources: [eso.lt]
+  - id: chemical
+    question: "Paskelbė cheminį pavojų, ką daryti?"
+    expected_action: answer
+    points:
+      - ["radij", "televizij", "LRT"]
+      - ["langus", "lang"]
+      - ["burną ir nosį", "respirator", "rankšluost", "kvėpavimo"]
+    sources: [pagd.lrv.lt]
+  - id: when-112
+    question: "Kada reikia skambinti 112?"
+    expected_action: answer
+    points:
+      - ["grėsm"]
+      - ["gyvyb", "sveikat"]
+    sources: [bpc.lrv.lt]
+  - id: drone
+    question: "Pamačiau droną, ką daryti?"
+    expected_action: answer
+    points:
+      - ["pastato vid", "priedang"]
+      - ["112"]
+      - ["nesiartink", "nelieskite"]
+    sources: [lt72.lt]
+  - id: no-alert-received
+    question: "Kodėl negavau perspėjimo pranešimo į telefoną?"
+    expected_action: answer
+    points:
+      - ["nustatym", "korinės transliacijos", "funkcij"]
+      - ["SIM"]
+    sources: [lt72.lt]
+  - id: emergency-smoke
+    question: "Kažkoks dūmas, sunku kvėpuoti, kaimynui bloga."
+    expected_action: emergency_transfer
+    points:
+      - ["112"]
+      - ["operator"]
+  - id: wants-human
+    question: "Ar aš kalbu su žmogumi? Noriu su žmogumi."
+    expected_action: operator_transfer
+    points:
+      - ["dirbtinio intelekto"]
+      - ["operator"]
+  - id: russian
+    question: "Здравствуйте, где ближайшее укрытие?"
+    expected_action: language_transfer
+    points:
+      - ["оператор"]
+  - id: off-topic
+    question: "Kokia rytoj bus krepšinio rungtynių pradžia?"
+    expected_action: no_info
+    points:
+      - ["neturiu", "1856", "lt72"]

@@ -1,0 +1,33 @@
+# Scripted demo calls (Lithuanian). Each scenario is one call: greeting, then
+# caller turns. Caller turns are synthesised with TTS and fed back through STT
+# (so the full speech loop is exercised) unless --text-only is used.
+scenarios:
+  - id: A1-shelter-eldership
+    title: Priedangos (su seniūnija) ir prašymas kalbėti lėčiau
+    turns:
+      - "Laba diena, kur man slėptis, jei paskelbtų oro pavojų? Gyvenu Žirmūnuose."
+      - "Pakartokite, prašau, lėčiau."
+  - id: A2-power-outage-senior
+    title: Elektros sutrikimas (senjoras) ir paprastesnė formuluotė
+    turns:
+      - "Pas mus dingo elektra, ką daryt?"
+      - "Nesupratau..."
+  - id: A3-chemical-health-risk
+    title: Cheminė avarija su pavojumi sveikatai -> 112 ir operatorius
+    turns:
+      - "Kažkoks dūmas, sunku kvėpuoti, kaimynui bloga."
+  - id: A4-russian-speaker
+    title: Rusakalbis skambintojas -> suderintas pranešimas ir operatorius
+    caller_language: ru-RU
+    turns:
+      - "Здравствуйте, где ближайшее укрытие?"
+  - id: A5-asks-for-human
+    title: Prašo žmogaus
+    turns:
+      - "Ar aš kalbu su žmogumi? Noriu su žmogumi."
+  - id: B-active-incident
+    title: Aktyvus incidentas paminimas pasisveikinime
+    set_incident: {id: demo-power-outage, status: active}
+    reset_incident: {id: demo-power-outage, status: planned}
+    turns:
+      - "Ar yra kokių nors pranešimų apie elektrą?"

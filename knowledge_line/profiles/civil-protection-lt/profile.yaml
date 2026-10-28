@@ -1,0 +1,69 @@
+# Profile: Lithuanian civil-protection information line.
+# Generic: the service name / municipality are configuration, not code.
+name: civil-protection-lt
+locale: lt-LT
+service_name: ${KL_SERVICE_NAME:-civilinės saugos informacijos liniją}
+default_municipality: ${KL_DEFAULT_MUNICIPALITY:-}
+kb_dir: kb
+shelters_csv: data/shelters.csv
+incidents_file: ${KL_INCIDENTS_FILE:-data/incidents.json}
+eval_file: eval/lt_eval.yaml
+
+# Deterministic safety rules run BEFORE the LLM (never left to the model).
+policy:
+  emergency_number: "112"
+  consult_line: "1856"            # PAGD 24/7 civil-protection consultation line (lt72.lt)
+  emergency_patterns:             # regex, matched case-insensitively on the caller's words
+    - "sunku kvėpuot|negali kvėpuot|negaliu kvėpuot|dūsta|dūstu|uždūst"
+    - "be sąmonės|neteko sąmonės|nualp|sukniub"
+    - "kraujuo|kraujavim"
+    - "dega |gaisras|liepsn|rūksta|dūmai .*(bloga|sunku)|dūmas.*(bloga|sunku)"
+    - "kaimynui bloga|man bloga|jam bloga|jai bloga|apsinuodij"
+    - "sprog(o|imas)|griūva|sugriuv|įstrig|prispaust"
+    - "sužeist|sužalot|traum"
+    - "nusižudyt|savižud"
+  human_patterns:
+    - "su žmogumi|žmogaus|gyvu operatoriumi|su operatoriumi|operatori|ar tu robotas|ar kalbu su žmog|tikru žmog"
+  slower_patterns:
+    - "lėčiau|lėtai|lėtiau|neskubėk|pakartok|dar kartą|dar karta"
+  simpler_patterns:
+    - "nesupratau|nesuprantu|nesuprat|paprasčiau|ką tai reiškia"
+  shelter_intent_patterns:
+    - "priedang|slėpt|slėpsi|pasislėp|oro pavoj|saugi vieta|saugią vietą|kur eiti"
+
+# Colloquial Lithuanian -> vocabulary used in official guidance (improves retrieval recall).
+query_expansions:
+  "dingo elektra|nėra elektros|be elektros|išjungė elektr|elektros nėra": "elektros tiekimo sutrikimai elektra"
+  "slėpt|pasislėp": "priedanga saugi vieta"
+  "dūm|smard|kvap": "cheminė tarša"
+  "kuprin|ką pasiimti|ką įsidėti": "išvykimo krepšys"
+  "sirena|pranešimas telefone|žinutė telefone": "perspėjimo pranešimas"
+  "dronas|droną|bepilot": "dronas oro pavojus"
+
+messages:
+  greeting: >-
+    Sveiki, skambinate į {service_name}. Jus aptarnauja dirbtinio intelekto sistema, ne žmogus.
+    Teikiama informacija yra informacinio pobūdžio. Jei kyla pavojus gyvybei ar sveikatai, skambinkite 112.
+    Jei norite, kad kalbėčiau lėčiau, pasakykite „lėčiau“ arba paspauskite 1. Kuo galiu padėti?
+  active_incident_prefix: "Dėmesio, šiuo metu aktualu: "
+  emergency: >-
+    Jei kyla pavojus gyvybei ar sveikatai, nedelsdami skambinkite 112. Dabar jus sujungsiu su operatoriumi.
+  human: "Ne, aš esu dirbtinio intelekto sistema. Sujungiu su operatoriumi."
+  no_info: >-
+    Šiuo klausimu patikimos informacijos neturiu. Daugiau informacijos rasite svetainėje lt72.lt
+    arba paskambinę į visą parą veikiančią konsultavimo liniją 1856. Jei kyla pavojus gyvybei ar sveikatai, skambinkite 112.
+  confirm_place: "Ar teisingai supratau – {eldership} seniūnija ({municipality})? "
+  repeat_slower_prefix: "Pakartosiu lėčiau. "
+  unsupported_language:
+    ru: >-
+      Здравствуйте. Эта линия работает на литовском языке. Сейчас я соединю вас с оператором.
+      Если есть угроза жизни или здоровью, звоните 112.
+    uk: >-
+      Вітаю. Ця лінія працює литовською мовою. Зараз я з'єднаю вас з оператором.
+      Якщо є загроза життю чи здоров'ю, телефонуйте 112.
+    en: >-
+      Hello. This line operates in Lithuanian. I will now connect you to an operator.
+      If there is a threat to life or health, call 112.
+    pl: >-
+      Dzień dobry. Ta linia działa w języku litewskim. Teraz połączę Pana/Panią z operatorem.
+      W razie zagrożenia życia lub zdrowia proszę dzwonić pod numer 112.

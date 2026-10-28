@@ -1,0 +1,97 @@
+[
+  {
+    "scenario": "A1-shelter-eldership",
+    "turn": 1,
+    "action": "answer",
+    "latency_ms": {
+      "retrieval": 2.4,
+      "llm": 1297.2,
+      "total_text": 1301.7,
+      "stt": 1669.6,
+      "tts": 4782.5
+    },
+    "heard": "Laba diena, kur man slėptis, jei paskelbtų oro pavojų? Gyvenu Žirmūnuose."
+  },
+  {
+    "scenario": "A1-shelter-eldership",
+    "turn": 2,
+    "action": "repeat",
+    "latency_ms": {
+      "total_text": 1.6,
+      "stt": 1069.2,
+      "tts": 5012.5
+    },
+    "heard": "Pakartokite, prašau, lėčiau"
+  },
+  {
+    "scenario": "A2-power-outage-senior",
+    "turn": 1,
+    "action": "answer",
+    "latency_ms": {
+      "retrieval": 0.6,
+      "llm": 808.7,
+      "total_text": 812.5,
+      "stt": 1216.8,
+      "tts": 2838.2
+    },
+    "heard": "Pas mus dingo elektra. Ka daryt?"
+  },
+  {
+    "scenario": "A2-power-outage-senior",
+    "turn": 2,
+    "action": "answer",
+    "latency_ms": {
+      "llm": 814.8,
+      "total_text": 815.7,
+      "stt": 830.8,
+      "tts": 2276.0
+    },
+    "heard": "Nesupratau"
+  },
+  {
+    "scenario": "A3-chemical-health-risk",
+    "turn": 1,
+    "action": "emergency_transfer",
+    "latency_ms": {
+      "total_text": 1.1,
+      "stt": 2050.1,
+      "tts": 1057.4
+    },
+    "heard": "Kažkoks dūmas, sunku kvėpuoti, kaimynui bloga"
+  },
+  {
+    "scenario": "A4-russian-speaker",
+    "turn": 1,
+    "action": "language_transfer",
+    "latency_ms": {
+      "total_text": 0.1,
+      "stt": 1098.8,
+      "tts": 1364.2
+    },
+    "heard": "Здравствуйте. Где ближайшее укрытие?"
+  },
+  {
+    "scenario": "A5-asks-for-human",
+    "turn": 1,
+    "action": "operator_transfer",
+    "latency_ms": {
+      "total_text": 1.0,
+      "stt": 1505.9,
+      "tts": 735.0
+    },
+    "heard": "Ar aš kalbu su žmogumi, noriu su žmogumi"
+  },
+  {
+    "scenario": "B-active-incident",
+    "turn": 1,
+    "action": "answer",
+    "latency_ms": {
+      "retrieval": 0.5,
+      "llm": 665.9,
+      "total_text": 668.5,
+      "stt": 1506.9,
+      "tts": 1817.0
+    },
+    "heard": "Ar yra kokių nors pranešimų apie elektrą?"
+  }
+]
